@@ -1,0 +1,29 @@
+<%= form_for(@api_user) do |f| %>
+  <% if @api_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@api_user.errors.count, "error") %> prohibited this api_user from being saved:</h2>
+
+      <ul>
+      <% @api_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :session_token %><br>
+    <%= f.text_field :session_token %>
+  </div>
+  <div class="field">
+    <%= f.label :password_digest %><br>
+    <%= f.text_field :password_digest %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

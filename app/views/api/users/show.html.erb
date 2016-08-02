@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @api_user.username %>
+</p>
+
+<p>
+  <strong>Session token:</strong>
+  <%= @api_user.session_token %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @api_user.password_digest %>
+</p>
+
+<%= link_to 'Edit', edit_api_user_path(@api_user) %> |
+<%= link_to 'Back', api_users_path %>
