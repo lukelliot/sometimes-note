@@ -36,6 +36,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rails_12factor'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
