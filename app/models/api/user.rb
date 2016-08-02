@@ -18,6 +18,6 @@ class Api::User < ActiveRecord::Base
   end
 
   def password=(password)
-    
+
   end
 end
