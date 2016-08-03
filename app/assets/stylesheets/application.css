@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+body {
+  font-family: gotham,helvetica,arial,sans-serif;
+  background: #f3f3f3;
+  font-weight: 400;
+}
+
+.form-logo {
+  content: url(https://www.evernote.com/redesign/global/img/elephant.png);
+}
+
+.form-logo .form-title {
+  margin: auto;
+}
+
+.form-all {
+  border-top: 4px solid #2DBE60;
+}
+
+ div.form-body {
+   margin: auto;
+   text-align: left;
+   border-radius: 2px;
+   border: 1px solid #dedede;
+   height: 600px;
+   width: 384px;
+   background-color: #fff;
+ }
+
+.error {
+}
+
+form.signup-form {
+  box-sizing: border-box;
+  margin: 40px;
+  padding: 40px;
+}

@@ -15,10 +15,16 @@ import App
 import { Router, Route, IndexRoute, hashHistory, Link }
   from 'react-router';
 
+// function _enterFunc(nextState, replace) {
+//   if (!userLoggedIn) {
+//     replace("/login")
+//   }
+// }
+
 const routes = (
   <Route path='/' component={App}>
-    <IndexRoute component={SignupForm} />
-  </Route>
+    <Route path="signup" component={SignupForm} />
+</Route>
 );
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -67,7 +67,6 @@ module.exports = React.createClass({
     return errs;
   },
 
-
   render() {
     let errors = this._handleErrors(),
         passwordError = errors[0],

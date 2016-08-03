@@ -36,6 +36,7 @@ module.exports = React.createClass({
   },
 
   _onErrorChange() {
+
     this.setState({
       errors: ErrorStore.errors('signup')
     });
@@ -74,14 +75,30 @@ module.exports = React.createClass({
         emailError = errors[1];
 
     return(
-      <form onSubmit={ this.submitUserSignup }>
-        <label>Your Email Address</label>
-        <input type="text" onChange={ this.updateEmail } value={ this.state.email } />
-        <div>{ emailError }</div>
-        <label>Create a password</label>
-        <input type="password" onChange={ this.updatePassword } value={ this.state.password } />
-        <div>{ passwordError }</div>
-        <input type="submit" value="Sign Up" />
-      </form>
+      <div className='form-all'>
+        <div className='form-header'>
+          <div className='form-logo'></div>
+          <div className='form-title'>Create Account</div>
+        </div>
+        <div className='form-body'>
+          <form onSubmit={ this.submitUserSignup } className='signup-form'>
+            <ol>
+              <li>
+                <label className='label'>Your Email Address</label>
+                <input className='email-text-input' type="text" onChange={ this.updateEmail } value={ this.state.email } />
+                <div className='error'>{ emailError }</div>
+              </li>
+              <li>
+                <label className='label'>Create a password</label>
+                <input className='password-text-input' type="password" onChange={ this.updatePassword } value={ this.state.password } />
+                <div className='error'>{ passwordError }</div>
+              </li>
+              <li>
+                <input className='signup-submit' type="submit" value="Sign Up" />
+              </li>
+            </ol>
+          </form>
+        </div>
+      </div>
   );}
 });
