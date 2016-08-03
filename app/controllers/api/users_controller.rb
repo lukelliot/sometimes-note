@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   # before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_in, except: [:update, :destroy]
+  before_action :require_logged_in, only: [:update, :destroy]
   # GET /api/users
   # GET /api/users.json
   def index

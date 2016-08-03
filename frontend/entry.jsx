@@ -4,7 +4,10 @@ import ReactDOM
   from 'react-dom';
 import SessionApiUtil
   from './util/session_api_util';
-import { Router, Route, IndexRoute, hashHistory, Link } from 'react-router';
+import SessionActions
+  from './actions/session_actions';
+import { Router, Route, IndexRoute, hashHistory, Link }
+  from 'react-router';
 
 document.addEventListener("DOMContentLoaded", () => {
   // ReactDOM.render(
@@ -14,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.SessionApiUtil = SessionApiUtil;
+window.SessionActions = SessionActions;
 
 // SessionApiUtil.login(
 //   () => { console.log(success); },
