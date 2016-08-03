@@ -4,8 +4,13 @@ module.exports = {
       url: 'api/users',
       type: 'POST',
       data: { user: userData },
-      success,
-      error
+      success(user) {
+        success(user);
+      },
+      error(xhr) {
+        const jsonErrors = xhr.responseJSON;
+        error('login', jsonErrors);
+      }
     });
   },
 
@@ -14,8 +19,13 @@ module.exports = {
       url: 'api/session',
       type: 'POST',
       data: { user: userData },
-      success,
-      error
+      success(user) {
+        success(user);
+      },
+      error(xhr) {
+        const jsonErrors = xhr.responseJSON;
+        error('signup', jsonErrors);
+      }
     });
   },
 

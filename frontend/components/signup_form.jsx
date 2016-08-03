@@ -18,14 +18,24 @@ module.exports = React.createClass({
   },
 
   componentDidMount() {
-    this.listener = SessionStore.addListener(this._onChange);
+    this.errorListener = ErrorStore.addListener(this._onErrorChange);
+    ErrorActions.clearErrors();
+
+    this.sessionListener = SessionStore.addListener(this._onSessionChange);
   },
 
   componentWillUnMount() {
-    this.listener.remove();
+    this.errorListener.remove();
+    this.sessionListener.remove();
   },
 
-  _onChange() {
+  _onErrorChange() {
+    this.setState({
+      errors: ErrorStore.errors()
+    });
+  },
+
+  _onSessionChange() {
     if (SessionStore.isUserLoggedIn) {
       this.context.router.push('/');
     }

@@ -33,10 +33,10 @@ SessionStore.isUserLoggedIn = () => {
 SessionStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case SessionConstants.LOGIN:
-      _login(payload.user).bind(this);
+      _login(payload.user);
       break;
     case SessionConstants.LOGOUT:
-      _logout().bind(this);
+      _logout();
       break;
   }
 };

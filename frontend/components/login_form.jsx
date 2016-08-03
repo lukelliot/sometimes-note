@@ -13,19 +13,30 @@ module.exports = React.createClass({
   getInitialState() {
     return({
       email: "",
-      password: ""
+      password: "",
+      errors: []
     });
   },
 
   componentDidMount() {
-    this.listener = SessionStore.addListener(this._onChange);
+    this.errorListener = ErrorStore.addListener(this._onErrorChange);
+    ErrorActions.clearErrors();
+
+    this.sessionListener = SessionStore.addListener(this._onSessionChange);
   },
 
   componentWillUnMount() {
-    this.listener.remove();
+    this.sessionListener.remove();
+    this.errorListener.remove();
   },
 
-  _onChange() {
+  _onErrorChange() {
+    this.setState({
+      errors: ErrorStore.errors()
+    });
+  },
+
+  _onSessionChange() {
     if (SessionStore.isUserLoggedIn) {
       this.context.router.push('/');
     }

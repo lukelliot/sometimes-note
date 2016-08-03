@@ -4,38 +4,31 @@ import AppDispatcher
   from '../dispatcher/dispatcher';
 import SessionConstants
   from '../constants/session_constants';
+import ErrorActions
+    from '../actions/error_actions';
 import { hashHistory }
   from 'react-router';
 
 module.exports = {
   signup(user) {
-    SessionApiUtil.signup(user, this.receiveCurrentUser);
+    SessionApiUtil.signup(
+      user,
+      this.receiveCurrentUser,
+      ErrorActions.setErrors
+    );
   },
 
   login(user) {
-    SessionApiUtil.login(user, this.receiveCurrentUser);
+    SessionApiUtil.login(
+      user,
+      this.receiveCurrentUser,
+      ErrorActions.setErrors
+    );
   },
 
   logout() {
-    SessionApiUtil.logout(this.receiveCurrentUser);
+    SessionApiUtil.logout(this.removeCurrentUser);
   },
-
-  // receiveCurrentUser(currentUser) {
-  //   switch (currentUser.id) {
-  //     case true:
-  //       AppDispatcher.dispatch({
-  //         actionType: SessionConstants.LOGIN,
-  //         currentUser: currentUser
-  //       });
-  //       break;
-  //     case false:
-  //       AppDispatcher.dispatch({
-  //         actionType: SessionConstants.LOGOUT,
-  //       });
-  //       hashHistory.push('/login');
-  //       break;
-  //   }
-  // }
 
   receiveCurrentUser(currentUser) {
     AppDispatcher.dispatch({
