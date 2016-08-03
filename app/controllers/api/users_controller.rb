@@ -1,10 +1,10 @@
 class Api::UsersController < ApplicationController
-  before_action :set_api_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_logged_in, except: [:create, :new]
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_logged_in, except: [:update, :destroy]
   # GET /api/users
   # GET /api/users.json
   def index
-    @api_users = Api::User.all
+    @users = Api::User.all
   end
 
   # GET /api/users/1
@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
 
   # GET /api/users/new
   def new
-    @api_user = Api::User.new
+    @user = Api::User.new
   end
 
   # GET /api/users/1/edit
@@ -24,16 +24,13 @@ class Api::UsersController < ApplicationController
   # POST /api/users
   # POST /api/users.json
   def create
-    @api_user = Api::User.new(api_user_params)
+    @user = Api::User.new(user_params)
 
-    respond_to do |format|
-      if @api_user.save
-        format.html { redirect_to @api_user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @api_user }
-      else
-        format.html { render :new }
-        format.json { render json: @api_user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      login(@user)
+      render @user
+    else
+      render @user.errors.full_messages, status: 422
     end
   end
 
@@ -54,7 +51,7 @@ class Api::UsersController < ApplicationController
   # DELETE /api/users/1
   # DELETE /api/users/1.json
   def destroy
-    @api_user.destroy
+    @user.destroy
     respond_to do |format|
       format.html { redirect_to api_users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
@@ -63,12 +60,12 @@ class Api::UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_api_user
-      @api_user = Api::User.find(params[:id])
+    def set_user
+      @user = Api::User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def api_user_params
-      params.require(:api_user).permit(:username, :session_token, :password_digest)
+    def user_params
+      params.require(:user).permit(:username, :password)
     end
 end
