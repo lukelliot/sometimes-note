@@ -26,6 +26,7 @@ ErrorStore.errors = (form) => {
   if (form === _form) {
     return _errors.slice();
   }
+  return [];
 };
 
 ErrorStore.__onDispatch = (payload) => {

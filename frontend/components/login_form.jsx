@@ -4,6 +4,10 @@ import SessionActions
   from '../actions/session_actions';
 import SessionStore
   from '../stores/session_store';
+import ErrorStore
+    from '../stores/error_store';
+import ErrorActions
+  from '../actions/error_actions';
 
 module.exports = React.createClass({
   contextTypes: {
@@ -32,7 +36,7 @@ module.exports = React.createClass({
 
   _onErrorChange() {
     this.setState({
-      errors: ErrorStore.errors()
+      errors: ErrorStore.errors('login')
     });
   },
 
@@ -55,13 +59,30 @@ module.exports = React.createClass({
     SessionActions.login(this.state);
   },
 
+  _handleErrors() {
+    let errs = this.state.errors;
+    while (errs.length < 2) {
+      errs = errs.concat([""]);
+    }
+    return errs;
+  },
+
+
   render() {
+    let errors = this._handleErrors(),
+        passwordError = errors[0],
+        emailError = errors[1];
+
     return(
       <form onSubmit={this.submitUserLogin}>
         <label>Your Email Address</label>
         <input type="text" onChange={this.updateEmail} value={this.state.email} />
+          <div>{ emailError }</div>
+
         <label>Create a password</label>
         <input type="password" onChange={this.updatePassword} value={this.state.password} />
+          <div>{ passwordError }</div>
+
         <input type="submit" value="Log In" />
       </form>
   );}

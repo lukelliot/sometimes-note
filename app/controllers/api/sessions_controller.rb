@@ -19,7 +19,22 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render @user
     else
-        render json: ['invalid email/password'], status: 401
+      render json: handle_errors(params), status: 401
     end
+  end
+
+  private
+
+  def handle_errors(params)
+    if User.exists?(email: params[:user][:email])
+      errors = ['password does not match records', ""]
+    else
+      errors = ['invalid password', 'email does not match records']
+    end
+
+    errors[0] = 'this is a required field' if params[:user][:password] == ""
+    errors[1] = 'this is a required field' if params[:user][:email] == ""
+
+    errors
   end
 end

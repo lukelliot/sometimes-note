@@ -9,7 +9,7 @@ module.exports = {
       },
       error(xhr) {
         const jsonErrors = xhr.responseJSON;
-        error('login', jsonErrors);
+        error('signup', jsonErrors);
       }
     });
   },
@@ -24,7 +24,7 @@ module.exports = {
       },
       error(xhr) {
         const jsonErrors = xhr.responseJSON;
-        error('signup', jsonErrors);
+        error('login', jsonErrors);
       }
     });
   },

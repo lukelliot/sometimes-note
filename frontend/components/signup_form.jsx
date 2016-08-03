@@ -4,6 +4,11 @@ import SessionActions
   from '../actions/session_actions';
 import SessionStore
   from '../stores/session_store';
+import ErrorStore
+  from '../stores/error_store';
+import ErrorActions
+    from '../actions/error_actions';
+
 
 module.exports = React.createClass({
   contextTypes: {
@@ -13,7 +18,8 @@ module.exports = React.createClass({
   getInitialState() {
     return({
       email: "",
-      password: ""
+      password: "",
+      errors: []
     });
   },
 
@@ -31,7 +37,7 @@ module.exports = React.createClass({
 
   _onErrorChange() {
     this.setState({
-      errors: ErrorStore.errors()
+      errors: ErrorStore.errors('signup')
     });
   },
 
@@ -54,13 +60,27 @@ module.exports = React.createClass({
     SessionActions.signup(this.state);
   },
 
+  _handleErrors() {
+    let errs = this.state.errors;
+    while (errs.length < 2) {
+      errs = errs.concat([""]);
+    }
+    return errs;
+  },
+
   render() {
+    let errors = this._handleErrors(),
+        passwordError = errors[0],
+        emailError = errors[1];
+
     return(
-      <form onSubmit={this.submitUserSignup}>
+      <form onSubmit={ this.submitUserSignup }>
         <label>Your Email Address</label>
-        <input type="text" onChange={this.updateEmail} value={this.state.email} />
+        <input type="text" onChange={ this.updateEmail } value={ this.state.email } />
+        <div>{ emailError }</div>
         <label>Create a password</label>
-        <input type="password" onChange={this.updatePassword} value={this.state.password} />
+        <input type="password" onChange={ this.updatePassword } value={ this.state.password } />
+        <div>{ passwordError }</div>
         <input type="submit" value="Sign Up" />
       </form>
   );}

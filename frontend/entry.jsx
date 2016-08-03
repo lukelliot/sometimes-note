@@ -17,7 +17,7 @@ import { Router, Route, IndexRoute, hashHistory, Link }
 
 const routes = (
   <Route path='/' component={App}>
-    <IndexRoute component={LoginForm} />
+    <IndexRoute component={SignupForm} />
   </Route>
 );
 
