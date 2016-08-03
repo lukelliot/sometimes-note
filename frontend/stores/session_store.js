@@ -7,19 +7,19 @@ import SessionConstants
 
 const SessionStore = new Store(AppDispatcher);
 
-_currentUser = {};
-_userHasBeenFetched = false;
+let _currentUser = {};
+let _userHasBeenFetched = false;
 
 const _login = (user) => {
   _currentUser = user;
   _userHasBeenFetched = true;
-  this.__emitChange();
+  SessionStore.__emitChange();
 };
 
 const _logout = () => {
   _currentUser = {};
   _userHasBeenFetched = false;
-  this.__emitChange();
+  SessionStore.__emitChange();
 };
 
 SessionStore.currentUser = () => {
@@ -40,3 +40,5 @@ SessionStore.__onDispatch = (payload) => {
       break;
   }
 };
+
+module.exports = SessionStore;

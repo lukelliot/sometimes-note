@@ -38,7 +38,7 @@ module.exports = {
   // }
 
   receiveCurrentUser(currentUser) {
-    AppDispatcher.disptch({
+    AppDispatcher.dispatch({
       actionType: SessionConstants.LOGIN,
       currentUser: currentUser
     });

@@ -17,8 +17,8 @@ class Api::UsersControllerTest < ActionController::TestCase
   end
 
   test "should create api_user" do
-    assert_difference('Api::User.count') do
-      post :create, api_user: { password_digest: @api_user.password_digest, session_token: @api_user.session_token, username: @api_user.username }
+    assert_difference('User.count') do
+      post :create, api_user: { password_digest: @api_user.password_digest, session_token: @api_user.session_token, email: @api_user.email }
     end
 
     assert_redirected_to api_user_path(assigns(:api_user))
@@ -35,12 +35,12 @@ class Api::UsersControllerTest < ActionController::TestCase
   end
 
   test "should update api_user" do
-    patch :update, id: @api_user, api_user: { password_digest: @api_user.password_digest, session_token: @api_user.session_token, username: @api_user.username }
+    patch :update, id: @api_user, api_user: { password_digest: @api_user.password_digest, session_token: @api_user.session_token, email: @api_user.email }
     assert_redirected_to api_user_path(assigns(:api_user))
   end
 
   test "should destroy api_user" do
-    assert_difference('Api::User.count', -1) do
+    assert_difference('User.count', -1) do
       delete :destroy, id: @api_user
     end
 

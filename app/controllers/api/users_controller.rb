@@ -1,10 +1,10 @@
-class Api::UsersController < ApplicationController
+  class Api::UsersController < ApplicationController
   # before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_logged_in, only: [:update, :destroy]
   # GET /api/users
   # GET /api/users.json
   def index
-    @users = Api::User.all
+    @users = User.all
   end
 
   # GET /api/users/1
@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
 
   # GET /api/users/new
   def new
-    @user = Api::User.new
+    @user = User.new
   end
 
   # GET /api/users/1/edit
@@ -24,13 +24,15 @@ class Api::UsersController < ApplicationController
   # POST /api/users
   # POST /api/users.json
   def create
-    @user = Api::User.new(user_params)
-
+    @user = User.new(user_params)
+    debugger
     if @user.save
+      debugger
       login(@user)
       render @user
     else
-      render @user.errors.full_messages, status: 422
+      debugger
+      render json: @user.errors.full_messages, status: 422
     end
   end
 
@@ -61,11 +63,11 @@ class Api::UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = Api::User.find(params[:id])
+      @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password)
+      params.require(:user).permit(:email, :password)
     end
 end

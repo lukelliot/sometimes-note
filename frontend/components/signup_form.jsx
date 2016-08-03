@@ -39,19 +39,19 @@ module.exports = React.createClass({
     this.setState({ password: e.target.value });
   },
 
-  submitUserLogin(e) {
+  submitUserSignup(e) {
     e.preventDefault();
-    SessionActions.login(this.state);
+    SessionActions.signup(this.state);
   },
 
   render() {
     return(
-      <form onSubmit={this.submitUserLogin}>
+      <form onSubmit={this.submitUserSignup}>
         <label>Your Email Address</label>
         <input type="text" onChange={this.updateEmail} value={this.state.email} />
         <label>Create a password</label>
         <input type="password" onChange={this.updatePassword} value={this.state.password} />
-        <input type="submit" value="Log In" />
+        <input type="submit" value="Sign Up" />
       </form>
   );}
 });

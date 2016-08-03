@@ -1,7 +1,7 @@
-class Api::User < ActiveRecord::Base
+class User < ActiveRecord::Base
   validates :password, length: { in: 6..30, allow_nil: true }
   validates :password_digest, presence: true
-  validates :session_token, :username, presence: true, uniqueness: true
+  validates :session_token, :email, presence: true, uniqueness: true
 
   # has_many :notes
   # has_many :notebooks
@@ -10,8 +10,8 @@ class Api::User < ActiveRecord::Base
 
   attr_reader :password
 
-  def self.find_by_credentials(username, password)
-    user = Api::User.find_by(username: username)
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
     return user if user && user.valid_password?(password)
     nil
   end
@@ -34,7 +34,7 @@ class Api::User < ActiveRecord::Base
   def generate_session_token!
     token = SecureRandom::urlsafe_base64(16)
 
-    while Api::User.exists?(session_token: token)
+    while User.exists?(session_token: token)
       token = SecureRandom::urlsafe_base64(16)
     end
 
