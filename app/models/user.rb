@@ -3,8 +3,21 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :session_token, :email, presence: true, uniqueness: true
 
-  # has_many :notes
-  # has_many :notebooks
+  has_many(
+    :notes,
+    class_name: 'Note',
+    foreign_key: :author_id,
+    primary_key: :id,
+    inverse_of: :author
+  )
+
+  has_many(
+    :notebooks,
+    class_name: 'Notebook',
+    primary_key: :id,
+    foreign_key: :author_id,
+    inverse_of: :author
+  )
 
   after_initialize :ensure_session_token
 

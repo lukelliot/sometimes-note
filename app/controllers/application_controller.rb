@@ -28,6 +28,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in
-    render json: { base: ['invalid email/password']} unless logged_in?
+    render json: { base: ['You must be logged in to do that']} unless logged_in?
   end
 end
