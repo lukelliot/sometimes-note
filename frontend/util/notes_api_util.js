@@ -1,6 +1,26 @@
 module.exports = {
-  fetchNotes(success, error) {
+  fetchAllNotes(success, error) {
+    $.ajax({
+      url: 'api/notes',
+      type: 'GET',
+      success,
+      error(xhr) {
+        let jsonErrors = xhr.responseJSON;
+        error(jsonErrors);
+      }
+    });
+  },
 
+  fetchSingleNote(id, success, error) {
+    $.ajax({
+      url: `api/notes/${id}`,
+      type: 'GET',
+      success,
+      error(xhr) {
+        let jsonErrors = xhr.responseJSON;
+        error(jsonErrors);
+      }
+    });
   },
 
   createNote(noteData, success, error) {
@@ -10,7 +30,7 @@ module.exports = {
       data: { note: noteData },
       success,
       error(xhr) {
-        jsonErrors = xhr.responseJSON;
+        let jsonErrors = xhr.responseJSON;
         error(jsonErrors);
       }
     });
@@ -23,7 +43,7 @@ module.exports = {
       data: noteData,
       success,
       error(xhr) {
-        jsonErrors = xhr.responseJSON;
+        let jsonErrors = xhr.responseJSON;
         error(jsonErrors);
       }
     });
@@ -33,7 +53,11 @@ module.exports = {
     $.ajax({
       url: `api/posts/${id}`,
       type: 'DELETE',
-      
+      success,
+      error(xhr) {
+        let jsonErrors = xhr.responseJSON;
+        error(jsonErrors);
+      }
     });
   }
 };

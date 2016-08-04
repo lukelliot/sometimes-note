@@ -3,10 +3,12 @@ class Api::NotesController < ApplicationController
 
   def index
     @notes = Note.all
+    render :index
   end
 
   def show
     @note = Note.find(params[:id])
+    render :show
   end
 
   def create
@@ -32,12 +34,19 @@ class Api::NotesController < ApplicationController
 
   def destroy
     note = current_user.notes.find(params[:id])
-    if current_user_is_author?(note) && note.destroy
-      render
-    Flash.now = "#{note.title} has been moved to the Trash"
+    if current_user_is_author?(note) && safely_destroys(note)
+      Flash.now = %Q(#{note.title} was sent to the trash.)
+      render :show
+    else
+      render json: ["Could not delete #{note.title}"], status 403
+    end
   end
 
   private
+
+  def safely_destroys(note)
+    note.destroy
+  end
 
   def safely_updates?(note)
     note.update_attributes(note_params)

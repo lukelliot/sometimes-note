@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render 'api/notes/show'
     else
-      render json: handle_errors(params), status: 401
+      render json: handle_errors, status: 401
     end
   end
 

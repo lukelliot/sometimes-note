@@ -1,13 +1,11 @@
+import AppDispatcher
+from '../dispatcher/dispatcher';
 import SessionApiUtil
   from '../util/session_api_util';
-import AppDispatcher
-  from '../dispatcher/dispatcher';
 import SessionConstants
   from '../constants/session_constants';
 import ErrorActions
-    from '../actions/error_actions';
-import { hashHistory }
-  from 'react-router';
+    from './error_actions';
 
 module.exports = {
   signup(user) {
