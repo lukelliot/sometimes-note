@@ -1,5 +1,5 @@
 class Api::NotesController < ApplicationController
-  before_action: :require_logged_in, only: [:create, :update]
+  # before_action: :require_logged_in, only: [:create, :update]
 
   def index
     @notes = Note.all
@@ -38,7 +38,7 @@ class Api::NotesController < ApplicationController
       Flash.now = %Q(#{note.title} was sent to the trash.)
       render :show
     else
-      render json: ["Could not delete #{note.title}"], status 403
+      render json: ["Could not delete #{note.title}"], status: 403
     end
   end
 
