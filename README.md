@@ -136,18 +136,16 @@ found at http://www.evernote.com. These features include:
   - adding tags to notebook
   - creating tags while adding to notebooks
   - searching notebooks by tag
-
+- Creat drawer component for tags to live in
+- hide drawer when focused on main notes page, and reveal when sidebar button is clicked
 - Style new elements
 - Seed tags and tag the seeded Notebooks
 
-### Phase 5: Allow Complex Styling in Notes (1 days, W2 Th 6pm)
+### Phase 5: Dynamic animations and Integration of all components (1 days, W2 Th 6pm)
 
-###### objective: Enable complex styling of notes.
+###### objective: Integrate all components into one single page, dynamic app.
 
-- Integrate react-quill (based on Quill.js). (?)
-- Use Rails helpers to sanitize HTML before rendering.
-- Style the new Quill elements.
-- Add Quill styling to seeded notes
+- integrate animations with drawers and make sure all components work in tandem on main notes page
 
 ### Phase 6: - Pagination / infinite scroll for Notes Index (1 day, W2 F 6pm)
 

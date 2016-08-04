@@ -13,10 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+
 body {
   font-family: gotham,helvetica,arial,sans-serif;
   background: #f3f3f3;
-  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+  font-weight: normal;
+  font-size: 1.0em;
 }
 
 .form-logo {
@@ -28,15 +33,20 @@ body {
 }
 
 input {
-  display: block;
+  box-sizing: border-box;
+  margin-top: 5px;
+  width: 100%;
+  height: 38px;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px;
 }
 
 .form-title h1 {
-  /*margin: 0px;*/
   text-align: center;
   font-size: 32px;
   color: #2DBE60;
-  font-weight: 300;
+  font-family: 'Arvo', serif;
+  font-weight: 100;
 }
 
 .form-header {
@@ -45,36 +55,92 @@ input {
 }
 
 .form-all {
+  font-weight: 300;
+  font-size: 10;
+  height: 100%;
   border-top: 4px solid #2DBE60;
 }
 .form-content {
-
+  height: 320px;
+  width: 100%;
+  margin: auto;
 }
 
 div.form-body {
+  display: flex;
    margin: auto;
    text-align: left;
    border-radius: 2px;
    border: 1px solid #dedede;
    height: 355px;
    width: 386px;
-   background-color: green;
- }
- .label, .email-text-input, .password-text-input {
-   display: inline;
-   /*float: left;*/
+   background-color: #fff;
  }
 
 .error {
-  line-height: 16px;
+  line-height: 27px;
+  box-sizing: border-box;
   font-size: 12px;
+  color: #B92219;
+  background-color: #FFD1D1;
+  position: absolute;
+  width: 99.5%;
+  left: 1px;
 }
+
+.error-message {
+  text-align: left;
+  position: relative;
+  left: 20px;
+  font-weight: 400;
+}
+
+ol li.input {
+  margin-bottom: 40px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.label {
+  margin-bottom: 5px;
+  color: #747474;
+  letter-spacing: 1px;
+}
+
+li.policy {
+  font-size: 11px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+.submit {
+  box-sizing: border-box;
+}
+
 ol {
-  background-color: yellow;
+  margin: auto;
+  padding: 0px;
   list-style: none;
+  text-indent: none;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
 form.signup-form {
-  box-sizing: border-box;
   margin: 32px;
+}
+
+input.signup-submit {
+  border-radius: 5px;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #fff;
+  cursor: pointer;
+  height: 46px;
+  width: 100%;
+  background-color: #2DBE60;
 }

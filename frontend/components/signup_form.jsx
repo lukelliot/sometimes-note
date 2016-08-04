@@ -83,13 +83,24 @@ module.exports = React.createClass({
         <div className='form-body'>
           <form onSubmit={ this.submitUserSignup } className='signup-form'>
             <div className='form-content'>
-              <label className='label'>Your Email Address</label><br/>
-              <input className='email-text-input' type="text" onChange={ this.updateEmail } value={ this.state.email } />
-              <div className='error'>{ emailError }</div>
-              <label className='label'>Create a password</label><br/>
-              <input className='password-text-input' type="password" onChange={ this.updatePassword } value={ this.state.password } />
-              <div className='error'>{ passwordError }</div>
-              <input className='signup-submit' type="submit" value="Sign Up" />
+              <ol>
+                <li className='input'>
+                  <label className='label'>Your Email Address</label><br/>
+                  <input className='email-text-input' type="text" onChange={ this.updateEmail } value={ this.state.email } />
+                  <div className='error'><div className='error-message'>{ emailError }</div></div>
+                </li>
+                <li className='input'>
+                  <label className='label'>Create a password</label><br/>
+                  <input className='password-text-input' type="password" onChange={ this.updatePassword } value={ this.state.password } />
+                  <div className='error'><div className='error-message'>{ passwordError }</div></div>
+                </li>
+                <li className='policy'>
+                  By clicking Create Account, I agree to the Terms of Service and Privacy Policy
+                </li>
+                <li className='submit'>
+                  <input className='signup-submit' type="submit" value="Create Account" />
+                </li>
+              </ol>
             </div>
           </form>
         </div>
