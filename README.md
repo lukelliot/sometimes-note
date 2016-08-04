@@ -46,36 +46,32 @@ found at http://www.evernote.com. These features include:
     * features rich-text editing for ease of user's use and immediate visual formatting
     * I don't actually know that much about Rich-text editing, so I'll have to investigate more before finishing this
 
-  - [ ]  Reminders **(Bonus)**
-    * uses calendar and time to set reminder for note to be completed
 
-  - [ ] Search **(Bonus)**
-    * search bar allows search through all notebooks or by specific notebook
-    * searches all content of notes
-    * on "GET" request it returns notes in 'Notes Sidebar' view with relevant search text highlighted in the note
-
-  - [ ] Auto-Save **(Bonus)**
-    * will autosave after a set interval
-    * because notes and notebooks are titled upon creation auto-save will never have to prompt user to save, it will already know to save to the associated created file
-
-  - [ ] Syntax Highlighting **(Bonus)**
-    * in addition to normal text editing, I'd like to include syntax highlighting to make the clone into a text editor for coders
-    * will include 'Atom-like' features like numbered rows, text-wrap, indent, etc.
-
-  - [ ] Auto-Complete for Code Languages **(Bonus)**
-    * I have no idea if this is doable or how I would implement this
-
-  - [ ] Github API integration **(Bonus)**
-    * enable the ability for users to push code files to github through the Evernote API
 
 # Documentation
-- Links
-- Links
-- Links
-- Links
-- Links
-- Links
 
+###### Links
+- [API Endpoints](./docs/api_endpoints.md)
+- [Components and Routes](./docs/components_routes.md)
+- [DB Schema](./docs/db_schema.md)
+- [Flux Cycles](./docs/flux_cycles.md)
+
+###### Wireframes
+- [Homepage][1]
+- [Main Notes page][2]
+- [Create New Notebook/Tag Component][3]
+- [Notebook Drawer Component][4]
+- [Tags Component][5]
+- [Search Component][6]
+- [User Signin/Signout/Signup][7]
+
+[1]:(./docs/wireframes/homepage.jpg)
+[2]:(./docs/wireframes/notes_main.jpg)
+[3]:(./docs/wireframs/create_new_nb_tag.jpg)
+[4]:(./docs/wireframes/notebook_comp.jpg)
+[5]:(./docs/wireframes/tags_comp.jpg)
+[6]:(./docs/wireframes/search_comp.jpg)
+[7]:(./docs/wireframes/user_signup_signin.jpg)
 
 # Implementation Timeline
 
@@ -89,7 +85,7 @@ found at http://www.evernote.com. These features include:
 - create StaticPages controller and root view
 - set up webpack & flux scaffold with skeleton files
 - setup APIUtil to interact with the API
-- set up flux cycle for frontend auth (?)
+- set up flux cycle for frontend auth
 - user signup/signin components
 - blank landing component after signin
 - style signin/signup components
@@ -118,11 +114,13 @@ found at http://www.evernote.com. These features include:
 ###### Objective: Notes belong to Notebooks, and can be viewed by notebook.
 
 - create Notebook model
-build out API, Flux loop, and components for:
-- Notebook CRUD
-- adding notes requires a notebook
+- build out API, Flux loop, and components for Notebook CRUD
+- validates notes requires a notebook
 - moving notes to a different notebook
 - viewing notes by notebook
+- create flux loop component to hold notebook drawer
+- create drawer animation
+- integrate Rich text editor for Notes Form using Quill.js
 - Use CSS to style new components
 - Seed Notebooks
 
@@ -134,10 +132,11 @@ build out API, Flux loop, and components for:
 
 - create Tag model and join table
 - build out API, Flux loop, and components for:
-- fetching tags for notebook
-- adding tags to notebook
-- creating tags while adding to notebooks
-- searching notebooks by tag
+  - fetching tags for notebook
+  - adding tags to notebook
+  - creating tags while adding to notebooks
+  - searching notebooks by tag
+
 - Style new elements
 - Seed tags and tag the seeded Notebooks
 
@@ -154,14 +153,38 @@ build out API, Flux loop, and components for:
 
 ###### objective: Add infinite scroll to Notes Index
 
-- Paginate Notes Index API to send 20 results at a time (?)
+- Paginate Notes Index API to send 20 results at a time from backend
 - Append next set of results when user scrolls and is near bottom
 - Make sure styling still looks good
 - Ensure we have enough seeded notes to demo infinite scroll
 
 ### Bonus Features (TBD)
 
-- Search through notes for blocks of text
-- Set reminders on notes
-- Changelogs for Notes (?)
-- Multiple sessions (?)
+
+- Changelogs for Notes
+  * Front end store or backend store?
+- Multiple sessions
+  * create backend for multiple sessions
+  * figure out how to make cookies work
+- Reminders **(Bonus)**
+  * uses calendar and time to set reminder for note to be completed
+
+- Search **(Bonus)**
+  * Search through notes for blocks of text using regex
+  * search bar allows search through all notebooks or by specific notebook
+  * searches all content of notes
+  * on "GET" request it returns notes in 'Notes Sidebar' view with relevant search text highlighted in the note
+
+- Auto-Save **(Bonus)**
+  * will autosave after a set interval
+  * because notes and notebooks are titled upon creation auto-save will never have to prompt user to save, it will already know to save to the associated created file
+
+- Syntax Highlighting **(Bonus)**
+  * in addition to normal text editing, I'd like to include syntax highlighting to make the clone into a text editor for coders
+  * will include 'Atom-like' features like numbered rows, text-wrap, indent, etc.
+
+- Auto-Complete for Code Languages **(Bonus)**
+  * I have no idea if this is doable or how I would implement this
+
+- Github API integration **(Bonus)**
+  * enable the ability for users to push code files to github through the Evernote API

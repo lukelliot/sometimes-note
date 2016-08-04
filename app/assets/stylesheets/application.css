@@ -23,29 +23,58 @@ body {
   content: url(https://www.evernote.com/redesign/global/img/elephant.png);
 }
 
-.form-logo .form-title {
+.form-logo, .form-title {
   margin: auto;
+}
+
+input {
+  display: block;
+}
+
+.form-title h1 {
+  /*margin: 0px;*/
+  text-align: center;
+  font-size: 32px;
+  color: #2DBE60;
+  font-weight: 300;
+}
+
+.form-header {
+  margin-top: 70px;
+  margin-bottom: 26px;
 }
 
 .form-all {
   border-top: 4px solid #2DBE60;
 }
+.form-content {
 
- div.form-body {
+}
+
+div.form-body {
    margin: auto;
    text-align: left;
    border-radius: 2px;
    border: 1px solid #dedede;
-   height: 600px;
-   width: 384px;
-   background-color: #fff;
+   height: 355px;
+   width: 386px;
+   background-color: green;
+ }
+ .label, .email-text-input, .password-text-input {
+   display: inline;
+   /*float: left;*/
  }
 
 .error {
+  line-height: 16px;
+  font-size: 12px;
+}
+ol {
+  background-color: yellow;
+  list-style: none;
 }
 
 form.signup-form {
   box-sizing: border-box;
-  margin: 40px;
-  padding: 40px;
+  margin: 32px;
 }
