@@ -17,7 +17,7 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login(@user)
-      render @user
+      render 'api/notes/show'
     else
       render json: handle_errors(params), status: 401
     end
@@ -25,7 +25,7 @@ class Api::SessionsController < ApplicationController
 
   private
 
-  def handle_errors(params)
+  def handle_errors
     if User.exists?(email: params[:user][:email])
       errors = ['password does not match records', ""]
     else
