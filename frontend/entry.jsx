@@ -29,12 +29,14 @@ const ensureLoggedIn = (nextState, replace) => {
 //  that you do not want accessed by non-users
 const routes = (
   <Route path='/' component={App}>
-    <IndexRoute component={SignupForm} />
+    <Route path='signup' component={SignupForm} />
   </Route>
 );
 
 document.addEventListener("DOMContentLoaded", () => {
-  SessionActions.receiveCurrentUser(window.currrentUser);
+  if (window.currentUser) {
+    SessionActions.receiveCurrentUser(window.currrentUser);
+  }
 
   ReactDOM.render(
     <Router routes={routes} history={hashHistory} />,

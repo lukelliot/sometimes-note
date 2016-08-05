@@ -1,1 +1,1 @@
-json.array! notes, :id, :title, :content, :archived
+json.array! notes, :id, :title, :content, :archived, :created_at

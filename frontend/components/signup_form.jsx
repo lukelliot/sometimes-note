@@ -77,6 +77,8 @@ module.exports = React.createClass({
         emailError = errors[1];
 
     return(
+      // NOTE: Change 'form-all' to 'session-form-cmp' and adjust CSS
+      
       <article className='form-all'>
         <section className='form-header'>
           <div className='form-logo'></div>

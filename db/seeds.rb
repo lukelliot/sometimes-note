@@ -6,16 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-ActiveRecord::Base.transaction do
-  # reset tables
-  User.delete_all
-  Note.delete_all
-
-  # users
-  one = User.create(email: 'one@fake.com', password: 'password')
-  two = User.create(email: 'two@fake.com', password: 'password')
-  three = User.create(email: 'three@fake.com', password: 'password')
-
-  # notes
-
-end
+# ActiveRecord::Base.transaction do
+#   # reset tables
+#   User.delete_all
+#   Note.delete_all
+#
+#   # users
+#   one = User.create(email: 'one@fake.com', password: 'password')
+#   two = User.create(email: 'two@fake.com', password: 'password')
+#   three = User.create(email: 'three@fake.com', password: 'password')
+#
+#   # notes
+#
+# end

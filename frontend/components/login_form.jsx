@@ -5,7 +5,7 @@ import SessionActions
 import SessionStore
   from '../stores/session_store';
 import ErrorStore
-    from '../stores/error_store';
+  from '../stores/error_store';
 import ErrorActions
   from '../actions/error_actions';
 
