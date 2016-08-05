@@ -33,9 +33,9 @@ class Api::NotesController < ApplicationController
   end
 
   def destroy
-    note = current_user.notes.find(params[:id])
-    if current_user_is_author?(note) && safely_destroys(note)
-      Flash.now = %Q(#{note.title} was sent to the trash.)
+    @note = current_user.notes.find(params[:id])
+    if current_user_is_author?(@note) && safely_destroys(@note)
+      # Flash.now = %Q(#{note.title} was sent to the trash.)
       render :show
     else
       render json: ["Could not delete #{note.title}"], status: 403

@@ -33,10 +33,10 @@ module.exports = React.createClass({
   componentWillUnMount() {
     this.errorListener.remove();
     this.sessionListener.remove();
+    ErrorActions.clearErrors();
   },
 
   _onErrorChange() {
-
     this.setState({
       errors: ErrorStore.errors('signup')
     });
@@ -50,10 +50,12 @@ module.exports = React.createClass({
 
   updateEmail(e) {
     this.setState({ email: e.target.value });
+    ErrorActions.clearErrors();
   },
 
   updatePassword(e) {
     this.setState({ password: e.target.value });
+    ErrorActions.clearErrors();
   },
 
   submitUserSignup(e) {
@@ -86,12 +88,12 @@ module.exports = React.createClass({
               <ol>
                 <li className='input'>
                   <label className='label'>Your Email Address</label><br/>
-                  <input className='email-text-input' type="text" onChange={ this.updateEmail } value={ this.state.email } />
+                  <input className='text-input' type="text" onChange={ this.updateEmail } value={ this.state.email } />
                   <div className='error'><div className='error-message'>{ emailError }</div></div>
                 </li>
                 <li className='input'>
                   <label className='label'>Create a password</label><br/>
-                  <input className='password-text-input' type="password" onChange={ this.updatePassword } value={ this.state.password } />
+                  <input className='text-input' type="password" onChange={ this.updatePassword } value={ this.state.password } />
                   <div className='error'><div className='error-message'>{ passwordError }</div></div>
                 </li>
                 <li className='policy'>

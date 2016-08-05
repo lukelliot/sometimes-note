@@ -47,7 +47,24 @@ module.exports = {
     );
   },
 
-  receiveAllNotes() {
+  receiveAllNotes(notes) {
+    AppDispatcher.dispatch({
+      actionType: NotesConstants.FETCHED_ALL_NOTES,
+      notes: notes
+    });
+  },
 
+  receiveSingleNote(note) {
+    AppDispatcher.dispatch({
+      actionType: NotesConstants.FETCHED_SINGLE_NOTE,
+      note: note
+    });
+  },
+
+  removeSingleNote(note) {
+    AppDispatcher.dispatch({
+      actionType: NotesConstants.DELETED_NOTE,
+      note: note
+    });
   }
 };
