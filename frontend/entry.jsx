@@ -16,6 +16,8 @@ import { Router, Route, IndexRoute, hashHistory, Link }
   from 'react-router';
 import NotesActions
   from './actions/notes_actions';
+import NotesStore
+  from './stores/notes_store';
 
 const ensureLoggedIn = (nextState, replace) => {
   if (!SessionStore.isUserLoggedIn()) {
@@ -42,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.SessionActions = SessionActions;
 window.NotesActions = NotesActions;
+window.NotesStore = NotesStore;
+
 // let u = {email: 'lucas', password: 'password'};
 // SessionActions.login(u);
 // let note = {title: 'title', content: 'content', notebook_id: 1};

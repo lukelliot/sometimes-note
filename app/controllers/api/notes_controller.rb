@@ -1,5 +1,5 @@
 class Api::NotesController < ApplicationController
-  before_action: :require_logged_in
+  # before_action: :require_logged_in
 
   def index
     @notes = current_user.notes
@@ -34,7 +34,6 @@ class Api::NotesController < ApplicationController
   def destroy
     @note = current_user.notes.find(params[:id])
     if current_user_is_author? && safely_destroys
-      # Flash.now = %Q(#{note.title} was sent to the trash.)
       render :show
     else
       render json: ["Could not delete #{note.title}"], status: 403

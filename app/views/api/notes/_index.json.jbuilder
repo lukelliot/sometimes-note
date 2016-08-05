@@ -1,5 +1,1 @@
-json.notes notes do |note|
-  json.id note.id
-  json.title note.title
-  json.content note.content
-end
+json.array! notes, :id, :title, :content, :archived
