@@ -1,2 +1,3 @@
 json.title note.title
-json.description note.description
+json.content note.content
+json.archived note.archived

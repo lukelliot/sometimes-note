@@ -1,5 +1,22 @@
+# == Schema Information
+#
+# Table name: notes
+#
+#  id          :integer          not null, primary key
+#  title       :string           not null
+#  content     :text             not null
+#  author_id   :integer          not null
+#  notebook_id :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  archived    :boolean          default(FALSE)
+#
+
 class Note < ActiveRecord::Base
-  validates :title, :content, :author_id, :notebook_id, presence: true
+  # NOTE Add validations for presence for authorid and notebookid
+  # => they were taken out for testing.
+  
+  validates :title, :content, presence: true
   validates :archived, inclusion: { in: [true, false] }
 
   belongs_to(

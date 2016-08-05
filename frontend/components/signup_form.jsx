@@ -1,4 +1,4 @@
-import React
+    import React
   from 'react';
 import SessionActions
   from '../actions/session_actions';
@@ -77,22 +77,22 @@ module.exports = React.createClass({
         emailError = errors[1];
 
     return(
-      <div className='form-all'>
-        <div className='form-header'>
+      <article className='form-all'>
+        <section className='form-header'>
           <div className='form-logo'></div>
           <div className='form-title'><h1>Create Account</h1></div>
-        </div>
-        <div className='form-body'>
+        </section>
+        <section className='form-body'>
           <form onSubmit={ this.submitUserSignup } className='signup-form'>
             <div className='form-content'>
               <ol>
-                <li className='input'>
-                  <label className='label'>Your Email Address</label><br/>
+                <li className='client-input'>
+                  <label className='input-type'>Your Email Address</label><br/>
                   <input className='text-input' type="text" onChange={ this.updateEmail } value={ this.state.email } />
                   <div className='error'><div className='error-message'>{ emailError }</div></div>
                 </li>
-                <li className='input'>
-                  <label className='label'>Create a password</label><br/>
+                <li className='client-input'>
+                  <label className='input-type'>Create a password</label><br/>
                   <input className='text-input' type="password" onChange={ this.updatePassword } value={ this.state.password } />
                   <div className='error'><div className='error-message'>{ passwordError }</div></div>
                 </li>
@@ -105,7 +105,7 @@ module.exports = React.createClass({
               </ol>
             </div>
           </form>
-        </div>
-      </div>
+        </section>
+      </article>
   );}
 });

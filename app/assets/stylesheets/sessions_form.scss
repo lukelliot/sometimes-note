@@ -1,29 +1,3 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *= require normalize
- *= require_tree .
- *= require_self
- */
-
-
-body {
-  font-family: gotham,helvetica,arial,sans-serif;
-  background: #f3f3f3;
-  margin: 0px;
-  padding: 0px;
-  font-weight: normal;
-  font-size: 1.0em;
-}
-
 .form-logo {
   content: url(https://www.evernote.com/redesign/global/img/elephant.png);
 }
@@ -66,7 +40,7 @@ input {
   margin: auto;
 }
 
-div.form-body {
+.form-body {
   display: flex;
    margin: auto;
    text-align: left;
@@ -95,19 +69,19 @@ div.form-body {
   font-weight: 400;
 }
 
-ol li.input {
+.client-input {
   margin-bottom: 40px;
   font-size: 13px;
   font-weight: 400;
 }
 
-.label {
+.input-type {
   margin-bottom: 5px;
   color: #747474;
   letter-spacing: 1px;
 }
 
-li.policy {
+.policy {
   font-size: 11px;
   margin-bottom: 20px;
   box-sizing: border-box;
@@ -128,11 +102,11 @@ ol {
   position: relative;
 }
 
-form.signup-form {
+.signup-form {
   margin: 32px;
 }
 
-input.signup-submit {
+.signup-submit {
   border-radius: 5px;
   position: relative;
   font-size: 16px;

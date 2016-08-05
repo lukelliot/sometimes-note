@@ -27,6 +27,8 @@ module.exports = {
     $.ajax({
       url: 'api/notes',
       type: 'POST',
+      // NOTE May need to change {note: noteData} to just noteData
+      //  depending on input from frontend
       data: { note: noteData },
       success,
       error(xhr) {
@@ -40,7 +42,9 @@ module.exports = {
     $.ajax({
       url: `api/notes/${noteData.id}`,
       type: 'PATCH',
-      data: noteData,
+      // NOTE May need to change {note: noteData} to just noteData
+      //  depending on input from frontend
+      data: { note: noteData },
       success,
       error(xhr) {
         let jsonErrors = xhr.responseJSON;
@@ -51,7 +55,7 @@ module.exports = {
 
   deleteNote(id, success, error) {
     $.ajax({
-      url: `api/posts/${id}`,
+      url: `api/notes/${id}`,
       type: 'DELETE',
       success,
       error(xhr) {

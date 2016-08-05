@@ -1,19 +1,18 @@
 class Api::NotesController < ApplicationController
-  # before_action: :require_logged_in, only: [:create, :update]
+  before_action: :require_logged_in
 
   def index
-    @notes = Note.all
+    @notes = current_user.notes
     render :index
   end
 
   def show
-    @note = Note.find(params[:id])
+    @note = current_user.notes.find(params[:id])
     render :show
   end
 
   def create
     @note = current_user.notes.new(note_params)
-    @note.author_id = current_user.id
 
     if @note.save
       render :show
@@ -25,7 +24,7 @@ class Api::NotesController < ApplicationController
   def update
     @note = current_user.notes.find(params[:id])
 
-    if current_user_is_author?(@note) && safely_updates?(@note)
+    if current_user_is_author? && safely_updates?
       render :show
     else
       render json: @note.errors.full_messages, status: 422
@@ -34,7 +33,7 @@ class Api::NotesController < ApplicationController
 
   def destroy
     @note = current_user.notes.find(params[:id])
-    if current_user_is_author?(@note) && safely_destroys(@note)
+    if current_user_is_author? && safely_destroys
       # Flash.now = %Q(#{note.title} was sent to the trash.)
       render :show
     else
@@ -44,16 +43,16 @@ class Api::NotesController < ApplicationController
 
   private
 
-  def safely_destroys(note)
-    note.destroy
+  def safely_destroys
+    @note.destroy
   end
 
-  def safely_updates?(note)
-    note.update_attributes(note_params)
+  def safely_updates?
+    @note.update_attributes(note_params)
   end
 
-  def current_user_is_author?(note)
-    current_user.id = note.author.id
+  def current_user_is_author?
+    current_user.id = @note.author.id
   end
 
   def note_params

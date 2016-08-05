@@ -2,37 +2,49 @@ import React
   from 'react';
 import ReactDOM
   from 'react-dom';
-import SessionApiUtil
-  from './util/session_api_util';
 import SessionActions
   from './actions/session_actions';
-import LoginForm
-  from './components/login_form';
+  // import SessionApiUtil
+  //   from './util/session_api_util';
+// import LoginForm
+//   from './components/login_form';
 import SignupForm
   from './components/signup_form';
 import App
   from './components/app';
 import { Router, Route, IndexRoute, hashHistory, Link }
   from 'react-router';
+import NotesActions
+  from './actions/notes_actions';
 
+const ensureLoggedIn = (nextState, replace) => {
+  if (!SessionStore.isUserLoggedIn()) {
+    replace('/login');
+  }
+};
 
+// NOTE Make sure to include onEnter={_ensureLoggedIn} to routes
+//  that you do not want accessed by non-users
 const routes = (
   <Route path='/' component={App}>
-    <Route path="signup" component={SignupForm} />
-</Route>
+    <IndexRoute component={SignupForm} />
+  </Route>
 );
 
 document.addEventListener("DOMContentLoaded", () => {
+  SessionActions.receiveCurrentUser(window.currrentUser);
+
   ReactDOM.render(
     <Router routes={routes} history={hashHistory} />,
     document.getElementById('root')
   );
 });
 
-window.SessionApiUtil = SessionApiUtil;
 window.SessionActions = SessionActions;
+window.NotesActions = NotesActions;
+// let u = {email: 'lucas', password: 'password'};
+// SessionActions.login(u);
+// let note = {title: 'title', content: 'content', notebook_id: 1};
+// NotesActions.createNote(note);
 
-// SessionApiUtil.login(
-//   () => { console.log(success); },
-//   () => { console.log(error); }
-// );
+// SessionActions.signup(u);

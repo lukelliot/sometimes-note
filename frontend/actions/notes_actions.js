@@ -48,6 +48,7 @@ module.exports = {
   },
 
   receiveAllNotes(notes) {
+    console.log(notes);
     AppDispatcher.dispatch({
       actionType: NotesConstants.FETCHED_ALL_NOTES,
       notes: notes
@@ -55,6 +56,7 @@ module.exports = {
   },
 
   receiveSingleNote(note) {
+    console.log(note);
     AppDispatcher.dispatch({
       actionType: NotesConstants.FETCHED_SINGLE_NOTE,
       note: note
@@ -62,6 +64,7 @@ module.exports = {
   },
 
   removeSingleNote(note) {
+    console.log(note);
     AppDispatcher.dispatch({
       actionType: NotesConstants.DELETED_NOTE,
       note: note
