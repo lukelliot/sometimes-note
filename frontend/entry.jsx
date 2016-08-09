@@ -1,25 +1,21 @@
-import React
-  from 'react';
-import ReactDOM
-  from 'react-dom';
-import SessionActions
-  from './actions/session_actions';
-  // import SessionApiUtil
-  //   from './util/session_api_util';
-// import LoginForm
-//   from './components/login_form';
-import SignupForm
-  from './components/signup_form';
-import App
-  from './components/app';
-import { Router, Route, IndexRoute, hashHistory, Link }
-  from 'react-router';
-import NotesActions
-  from './actions/notes_actions';
-import NotesStore
-  from './stores/notes_store';
+// React
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, IndexRoute, hashHistory, Link } from 'react-router';
 
-const ensureLoggedIn = (nextState, replace) => {
+// Front-End Authorization
+import SessionStore from './stores/session_store';
+import SessionActions from './actions/session_actions';
+
+// Routes
+import App from './components/app';
+import Home from './components/home';
+import SessionForm from './components/session/session_form';
+import Main from './components/main';
+
+// import NotesActions from './actions/notes_actions';
+
+const _ensureLoggedIn = (nextState, replace) => {
   if (!SessionStore.isUserLoggedIn()) {
     replace('/login');
   }
@@ -28,8 +24,12 @@ const ensureLoggedIn = (nextState, replace) => {
 // NOTE Make sure to include onEnter={_ensureLoggedIn} to routes
 //  that you do not want accessed by non-users
 const routes = (
-  <Route path='/' component={App}>
-    <Route path='signup' component={SignupForm} />
+  <Route path='/' component={ App }>
+    <IndexRoute component={ Home } />
+    <Route path='home' component={ Home } />
+    <Route path='signup' component={ SessionForm } />
+    <Route path='signin' component={ SessionForm } />
+    <Route path='main' component={ Main } />
   </Route>
 );
 
@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 });
 
-window.SessionActions = SessionActions;
-window.NotesActions = NotesActions;
-window.NotesStore = NotesStore;
+// window.SessionActions = SessionActions;
+// window.NotesActions = NotesActions;
+// window.NotesStore = NotesStore;
 
 // let u = {email: 'lucas', password: 'password'};
 // SessionActions.login(u);

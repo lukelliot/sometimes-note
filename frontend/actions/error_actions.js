@@ -1,9 +1,6 @@
-import ErrorStore
-  from '../stores/error_store';
-import AppDispatcher
-  from '../dispatcher/dispatcher';
-import ErrorConstants
-  from '../constants/error_constants';
+import ErrorStore from '../stores/error_store';
+import AppDispatcher from '../dispatcher/dispatcher';
+import ErrorConstants from '../constants/error_constants';
 
 module.exports = {
   setErrors(form, errors) {

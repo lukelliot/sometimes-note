@@ -1,13 +1,20 @@
-import AppDispatcher
-  from '../dispatcher/dispatcher';
-import { Store }
-  from 'flux/utils';
-import NotesConstants
-  from '../constants/notes_constants';
+import AppDispatcher from '../dispatcher/dispatcher';
+import NotesConstants from '../constants/notes_constants';
+import { Store } from 'flux/utils';
 
 const NotesStore = new Store(AppDispatcher);
 
 let _notes = {};
+
+NotesStore.allNotesByNotebookId = (notebookId) => {
+  let notesByNotebookId = [];
+  Object.keys(_notes).forEach( id => {
+    if (_notes[id].notebook_id === notebookId) {
+      notesByNotebookId.push(_notes[id]);
+    }
+  });
+  return notesByNotebookId;
+};
 
 NotesStore.all = () => {
   return Object.keys(_notes).map( id => {

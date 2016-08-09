@@ -1,11 +1,7 @@
-import AppDispatcher
-from '../dispatcher/dispatcher';
-import SessionApiUtil
-  from '../util/session_api_util';
-import SessionConstants
-  from '../constants/session_constants';
-import ErrorActions
-    from './error_actions';
+import AppDispatcher from '../dispatcher/dispatcher';
+import SessionApiUtil from '../util/session_api_util';
+import SessionConstants from '../constants/session_constants';
+import ErrorActions from './error_actions';
 
 module.exports = {
   signup(user) {

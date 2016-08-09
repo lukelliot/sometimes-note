@@ -1,11 +1,7 @@
-import AppDispatcher
-  from '../dispatcher/dispatcher';
-import NotesApiUtil
-  from '../util/notes_api_util';
-import NotesConstants
-  from '../constants/notes_constants';
-import  ErrorActions
-  from './error_actions';
+import AppDispatcher from '../dispatcher/dispatcher';
+import NotesApiUtil from '../util/notes_api_util';
+import NotesConstants from '../constants/notes_constants';
+import ErrorActions from './error_actions';
 
 module.exports = {
   fetchAllNotes() {

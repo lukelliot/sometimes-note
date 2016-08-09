@@ -1,9 +1,6 @@
-import AppDispatcher
-  from '../dispatcher/dispatcher';
-import { Store }
-  from 'flux/utils';
-import SessionConstants
-  from '../constants/session_constants';
+import AppDispatcher from '../dispatcher/dispatcher';
+import SessionConstants from '../constants/session_constants';
+import { Store } from 'flux/utils';
 
 const SessionStore = new Store(AppDispatcher);
 
