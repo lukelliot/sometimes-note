@@ -101,9 +101,9 @@ found at http://www.evernote.com. These features include:
  - jBuilder views for notes
  - test out API interaction in the console.
 - implement each note component, building out the flux loop as needed.
- - NotesIndex
- - NoteIndexItem
- - NoteForm
+   - NotesIndex
+   - NoteIndexItem
+   - NoteForm
  - save Notes to the DB when the form loses focus or is left idle after editing.
  - style notes components
  - seed notes
@@ -118,13 +118,17 @@ found at http://www.evernote.com. These features include:
 - validates notes requires a notebook
 - moving notes to a different notebook
 - viewing notes by notebook
+  - build 'Notebooks Show' which will contain Notes by Notebook
 - create flux loop component to hold notebook drawer
 - create drawer animation
-- integrate Rich text editor for Notes Form using Quill.js
+- integrate Rich text editor for Notes Form using Draft.js
 - Use CSS to style new components
+- Create NavStore which will be responsible for holding state:
+  - Current NoteForm
+  - which panes are currently opened
+  - which notebook to which notes will be saved
+  
 - Seed Notebooks
-
-###### Phase 3 adds organization to the Notes. Notes belong to a Notebook, which has its own Index view.
 
 ### Phase 4: Tags (1 days, W2 W 6pm)
 
