@@ -24,7 +24,7 @@ class Api::NotesController < ApplicationController
   def update
     @note = current_user.notes.find(params[:id])
 
-    if current_user_is_author? && safely_updates?
+    if @note.update_attributes(note_params)
       render :show
     else
       render json: @note.errors.full_messages, status: 422
@@ -33,7 +33,7 @@ class Api::NotesController < ApplicationController
 
   def destroy
     @note = current_user.notes.find(params[:id])
-    if current_user_is_author? && safely_destroys
+    if @note.destroy
       render :show
     else
       render json: ["Could not delete #{note.title}"], status: 403
@@ -41,18 +41,6 @@ class Api::NotesController < ApplicationController
   end
 
   private
-
-  def safely_destroys
-    @note.destroy
-  end
-
-  def safely_updates?
-    @note.update_attributes(note_params)
-  end
-
-  def current_user_is_author?
-    current_user.id = @note.author.id
-  end
 
   def note_params
     params.require(:note).permit(
