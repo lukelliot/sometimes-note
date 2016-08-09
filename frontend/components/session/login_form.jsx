@@ -1,17 +1,12 @@
-import React
-  from 'react';
-import SessionActions
-  from '../actions/session_actions';
-import SessionStore
-  from '../stores/session_store';
-import ErrorStore
-  from '../stores/error_store';
-import ErrorActions
-  from '../actions/error_actions';
+import React from 'react';
+import SessionActions from '../../actions/session_actions';
+import SessionStore from '../../stores/session_store';
+import ErrorStore from '../../stores/error_store';
+import ErrorActions from '../../actions/error_actions';
 
 module.exports = React.createClass({
   contextTypes: {
-      router: React.PropTypes.object.isRequired
+    router: React.PropTypes.object.isRequired
   },
 
   getInitialState() {
