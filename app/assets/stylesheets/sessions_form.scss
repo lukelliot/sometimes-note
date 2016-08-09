@@ -6,7 +6,7 @@
   margin: auto;
 }
 
-input {
+input.text-input {
   box-sizing: border-box;
   margin-top: 5px;
   width: 100%;
@@ -92,18 +92,18 @@ input {
   box-sizing: border-box;
 }
 
-ol {
+ol.form-list {
   margin: auto;
   padding: 0px;
   list-style: none;
   text-indent: none;
   height: 100%;
-  width: 100%;
   position: relative;
 }
 
 .signup-form {
   margin: 32px;
+  width: 100%;
 }
 
 .signup-submit {
@@ -117,4 +117,22 @@ ol {
   height: 46px;
   width: 100%;
   background-color: #2DBE60;
+}
+
+.alt-link {
+  text-align: center;
+}
+
+.alt-link p {
+  padding-top: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #747474;
+}
+
+.alt-link a {
+  color: #2DBE60;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-decoration: none;
 }
