@@ -25,7 +25,6 @@ module.exports = {
   },
 
   receiveCurrentUser(currentUser) {
-    console.log(currentUser);
     AppDispatcher.dispatch({
       actionType: SessionConstants.LOGIN,
       currentUser: currentUser
@@ -33,7 +32,6 @@ module.exports = {
   },
 
   removeCurrentUser() {
-    console.log('logged out');
     AppDispatcher.dispatch({
       actionType: SessionConstants.LOGOUT,
     });

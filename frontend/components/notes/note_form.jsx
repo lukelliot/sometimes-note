@@ -1,11 +1,14 @@
 import React from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import NoteFormStore from '../../stores/note_form_store';
+import NotesActions from '../../actions/notes_actions';
+import Quill from 'react-quill';
 
 module.exports = React.createClass({
   getInitialState() {
     return({
+      id: undefined,
       title: '',
-      editorState: EditorState.createEmpty()
+      content: ''
     });
   },
 
@@ -13,16 +16,54 @@ module.exports = React.createClass({
     this.refs.editor.focus();
   },
 
-  _onChange(editorState) {
-    this.setState({ editorState });
+  componentDidMount() {
+    this.formListener = NoteFormStore.addListener(this._onFormChange);
   },
 
-  _handleStyleClick(style) {
-    this._onChange(RichUtils.toggleInlineStyle(this.state.editorState, style));
+  componentWillUnmount() {
+    this.formListener.remove();
   },
 
-  _handleCodeClick() {
-    this._onChange(RichUtils.toggleCode(this.state.editorState));
+  _formatNoteForSave() {
+    let content = this.state.content,
+        noteToSave = {
+          title: this.state.title,
+          content: content.slice(5, content.length - 6)
+        };
+
+    if (this.state.id) {
+      noteToSave.id = this.state.id;
+    }
+    return noteToSave;
+  },
+
+  _onFormChange() {
+    if (this.state.title !== '') {
+      if (this.state.id) {
+        NotesActions.saveNote(this._formatNoteForSave());
+      } else {
+        NotesActions.createNote(this._formatNoteForSave());
+      }
+    }
+
+    let note = NoteFormStore.getCurrentNoteForm();
+    if (note) {
+      this.setState({
+        id: note.id,
+        title: note.title,
+        content: note.content
+      });
+    } else {
+      this.setState({
+        id: undefined,
+        title: '',
+        content: ''
+      });
+    }
+  },
+
+  _onContentChange(content) {
+    this.setState({ content });
   },
 
   _setTitle(e) {
@@ -32,19 +73,19 @@ module.exports = React.createClass({
   render() {
     return(
       <div className='note-form-cmp'>
-        <div className='form-buttons'>
-          <button onClick={() => this._handleStyleClick('BOLD')}>B</button>
-          <button onClick={() => this._handleStyleClick('ITALIC')}>I</button>
-          <button onClick={() => this._handleStyleClick('UNDERLINE')}>U</button>
-          <button onClick={() => this._handleCodeClick()}>Code</button>
-        </div>
+        <input className='title-input'
+          value={ this.state.title }
+          type='text'
+          placeholder='Title your note'
+          onChange={ this._setTitle }
+        />
         <div className='form-divider'></div>
-        <input className='title-input' type='text' placeholder='Title your note' onChange={this._setTitle} />
-        <section className='edit-input' onClick={this._focus}>
-          <Editor
-            editorState={ this.state.editorState }
-            onChange={ this._onChange }
-            placeholder='Just start typing...'
+        <section className='edit-input' onClick={ this._focus }>
+          <Quill className='editor'
+            theme='snow'
+            value={ this.state.content }
+            defaultValue='Make a new note...'
+            onChange={ this._onContentChange }
             ref='editor'
           />
         </section>

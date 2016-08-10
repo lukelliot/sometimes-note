@@ -1,0 +1,4 @@
+module.exports = {
+  SET_CURRENT_NOTE_FORM: 'SET_CURRENT_NOTE_FORM',
+  SET_NEW_NOTE: 'SET_NEW_NOTE'
+};

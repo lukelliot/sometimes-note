@@ -23,7 +23,7 @@ class Notebook < ActiveRecord::Base
 
   has_many(
     :notes,
-    class_name: 'Notebook',
+    class_name: 'Note',
     primary_key: :id,
     foreign_key: :notebook_id,
     inverse_of: :notebook

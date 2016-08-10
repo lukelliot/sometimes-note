@@ -1,14 +1,24 @@
 import React from 'react';
-// import NotesIndex from './components/notes/notes_index';
-// import { Link } from 'react-router';
+import NoteFormActions from '../actions/note_form_actions';
+import ToggleActions from '../actions/toggle_actions';
 
 module.exports = React.createClass({
+  _newNote(e) {
+    e.preventDefault();
+    NoteFormActions.setNewNoteForm();
+  },
+
+  _toggleNotebooksIndex(e) {
+    e.preventDefault();
+    ToggleActions._toggleNotebooksIndex();
+  },
+
   render() {
     return(
       <div className='nav'>
-        <button>New Note</button>
+        <button onClick={ this._newNote }>New Note</button>
         <button>Notes</button>
-        <button>Notebooks</button>
+        <button onClick={ this._toggleNotebooksIndex }>Notebooks</button>
         <button>Profile</button>
       </div>
     );

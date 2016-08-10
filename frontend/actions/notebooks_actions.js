@@ -5,7 +5,7 @@ import ErrorActions from './error_actions';
 
 module.exports = {
   fetchAllNotebooks() {
-    NotebooksApiUtil.fetchAllNotes(
+    NotebooksApiUtil.fetchAllNotebooks(
       this.receiveAllNotebooks,
       ErrorActions.setErrors
     );

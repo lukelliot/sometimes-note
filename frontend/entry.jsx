@@ -12,6 +12,7 @@ import App from './components/app';
 import Home from './components/home';
 import SessionForm from './components/session/session_form';
 import Main from './components/main';
+import NotebooksIndex from './components/notebooks/notebooks_index';
 
 // import NotesActions from './actions/notes_actions';
 
@@ -30,6 +31,7 @@ const routes = (
     <Route path='signup' component={ SessionForm } />
     <Route path='signin' component={ SessionForm } />
     <Route path='main' component={ Main } />
+    <Route path='notebooks' component={ NotebooksIndex } />
   </Route>
 );
 
