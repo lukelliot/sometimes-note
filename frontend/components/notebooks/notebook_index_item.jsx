@@ -21,13 +21,15 @@ module.exports = React.createClass({
   render() {
     let notebook = this.props.notebook;
     return(
-      <div className='notebook-item-cmp'>
-        <div className='notebook-item-title'>
-          { notebook.title }
+      <li className='notebook-item-cmp'>
+        <div className='notebook-item-content'>
+          <div className='notebook-item-title'>
+            { notebook.title }
+            <button className='delete-button' onClick={ this._handleDelete }>Delete</button>
+          </div>
+          { this._countNotes() }
         </div>
-        { this._countNotes() }
-        <button onClick={ this._handleDelete } />
-      </div>
+      </li>
     );
   }
 });

@@ -1,27 +1,53 @@
 .main
-  height: 774px
-  width: 1440px
+  position: relative
+  height: 100%
+  width: 100%
 
 .nav
   box-sizing: border-box
-  width: 5%
+  position: relative
+  z-index: 10
+  display: flex
+  flex-direction: column
   height: 100%
   background-color: #F8F8F8
   float: left
+  border-right: 1px solid #ECECEC
+  overflow: hidden
+
+.nav button
+  max-width: 73px
+
+.notebooks-drawer-cmp-closed
+  position: absolute
+  left: -390px
+  width: 460px
+  opacity: 10
+  z-index: 9
+  transition: all 400ms ease-in
+  box-sizing: border-box
+  height: 100%
+  width: 460px
+  border-right: 3px solid #F1F1F1
+  background-color: #fff
+  letter-spacing: 1px
+  color: #878787
+  display: flex
+  flex-direction: column
 
 .notes-drawer-cmp
   box-sizing: border-box
   background-color: #fff
   height: 100%
-  width: 24.5%
   float: left
   border-right: 1px solid #ECECEC
+  display: flex
+  flex-direction: column
 
 
 .note-form-cmp
   box-sizing: border-box
-  padding: 0px 60px
-  float: left
+  padding: 0 10%
   background-color: #fff
   height: 100%
-  width: 70.5%
+  overflow: hidden
