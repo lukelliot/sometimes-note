@@ -29,7 +29,7 @@ module.exports = React.createClass({
             <h4>{ moment(note.created_at).fromNow() }</h4>
           </div>
           <div className='note-item-content'>
-            { note.content }
+            { $(note.content).text() }
           </div>
         </section>
       </li>

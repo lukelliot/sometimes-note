@@ -25,11 +25,10 @@ module.exports = React.createClass({
   },
 
   _formatNoteForSave() {
-    let content = this.state.content,
-        noteToSave = {
-          title: this.state.title,
-          content: content.slice(5, content.length - 6)
-        };
+    let noteToSave = {
+      title: this.state.title,
+      content: this.state.content
+    };
 
     if (this.state.id) {
       noteToSave.id = this.state.id;
@@ -84,7 +83,7 @@ module.exports = React.createClass({
           <Quill className='editor'
             theme='snow'
             value={ this.state.content }
-            defaultValue='Make a new note...'
+            placeholder='Make a new note...'
             onChange={ this._onContentChange }
             ref='editor'
           />

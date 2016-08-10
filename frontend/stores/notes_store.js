@@ -9,7 +9,7 @@ let _notes = {};
 NotesStore.allNotesByNotebookId = (notebookId) => {
   let notesByNotebookId = [];
   Object.keys(_notes).forEach( id => {
-    if (_notes[id].notebook_id === notebookId) {
+    if (_notes[id].notebookId === notebookId) {
       notesByNotebookId.push(_notes[id]);
     }
   });
