@@ -37,8 +37,16 @@
   box-sizing: border-box
   width: 335px
   height: 120px
+  transition: all 80ms ease-in
+
+.notes-index-item:hover, .notes-index-item:hover *
+  background-color: #2FBE61
+  color: #fff
+  border: none
+  transition: all 80ms ease-in
 
 .note-item-info
+  padding-top: 15px
   box-sizing: border-box
   margin: 0px 24px
   height: 100%
@@ -46,15 +54,15 @@
 
 .note-item-title h3
   color: #2DBE60
-  margin-top: 10px
-  margin-bottom: 6px
+  margin-top: 0px
+  margin-bottom: 8px
   font-family: 'Arvo', serif
   font-weight: lighter
   font-size: 16px
 
 .note-item-created-at h4
-  margin-top: 0
-  margin-bottom: 8px
+  margin-top: 0px
+  margin-bottom: 15px
   font: Helvetica
   font-size: 11px
   letter-spacing: 2px
@@ -63,7 +71,7 @@
   font-weight: lighter
 
 .note-item-content
-  overflow: hidden
+  text-overflow: ellipsis
   color: #878787
   font-weight: lighter
   font-size: 12px
