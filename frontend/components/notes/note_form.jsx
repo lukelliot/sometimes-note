@@ -1,9 +1,20 @@
+// React
 import React from 'react';
+
+// Stores
 import NoteFormStore from '../../stores/note_form_store';
+import SessionStore from '../../stores/session_store';
+
+// Actions
 import NotesActions from '../../actions/notes_actions';
+
+// Children
+import NotebooksDropdown from '../notebooks/notebooks_dropdown';
+
+// Vendor
 import Quill from 'react-quill';
 
-module.exports = React.createClass({
+const NoteForm = React.createClass({
   getInitialState() {
     return({
       id: undefined,
@@ -78,7 +89,10 @@ module.exports = React.createClass({
           placeholder='Title your note'
           onChange={ this._setTitle }
         />
-        <div className='form-divider'></div>
+        <div className='form-options'>
+          <NotebooksDropdown currentNoteFormId={ this.state.id } />
+          <button className='note-form-save-button'>Save Note</button>
+        </div>
         <section className='edit-input' onClick={ this._focus }>
           <Quill className='editor'
             theme='snow'
@@ -92,3 +106,4 @@ module.exports = React.createClass({
     );
   }
 });
+ module.exports = NoteForm;

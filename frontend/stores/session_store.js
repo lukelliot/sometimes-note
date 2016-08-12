@@ -19,6 +19,10 @@ const _logout = () => {
   SessionStore.__emitChange();
 };
 
+SessionStore.defaultNotebookId = () => {
+  return _currentUser.defaultNotebookId;
+};
+
 SessionStore.currentUser = () => {
   return _currentUser;
 };
@@ -30,7 +34,7 @@ SessionStore.isUserLoggedIn = () => {
 SessionStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case SessionConstants.LOGIN:
-      _login(payload.user);
+      _login(payload.currentUser);
       break;
     case SessionConstants.LOGOUT:
       _logout();

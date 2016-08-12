@@ -1,6 +1,6 @@
 import React from 'react';
 
-module.exports = React.createClass({
+const App = React.createClass({
   render() {
   return(
       <div className='spa'>
@@ -9,3 +9,5 @@ module.exports = React.createClass({
     );
   }
 });
+
+module.exports = App;

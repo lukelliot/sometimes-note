@@ -14,8 +14,6 @@ import SessionForm from './components/session/session_form';
 import Main from './components/main';
 import NotebooksIndex from './components/notebooks/notebooks_index';
 
-// import NotesActions from './actions/notes_actions';
-
 const _ensureLoggedIn = (nextState, replace) => {
   if (!SessionStore.isUserLoggedIn()) {
     replace('/login');
@@ -31,13 +29,12 @@ const routes = (
     <Route path='signup' component={ SessionForm } />
     <Route path='signin' component={ SessionForm } />
     <Route path='main' component={ Main } />
-    <Route path='notebooks' component={ NotebooksIndex } />
   </Route>
 );
 
 document.addEventListener("DOMContentLoaded", () => {
   if (window.currentUser) {
-    SessionActions.receiveCurrentUser(window.currrentUser);
+    SessionActions.receiveCurrentUser(window.currentUser);
   }
 
   ReactDOM.render(
@@ -46,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 });
 
+// window.SessionStore = SessionStore;
 // window.SessionActions = SessionActions;
 // window.NotesActions = NotesActions;
 // window.NotesStore = NotesStore;

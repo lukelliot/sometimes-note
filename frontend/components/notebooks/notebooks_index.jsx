@@ -1,15 +1,18 @@
 // React
 import React from 'react';
 
-// Flux
-import NotebooksActions from '../../actions/notebooks_actions';
+// Stores
 import NotebooksStore from '../../stores/notebooks_store';
 import ToggleStore from '../../stores/toggle_store';
+
+// Actions
+import NotebooksActions from '../../actions/notebooks_actions';
+import ToggleActions from '../../actions/toggle_actions';
 
 // Children
 import NotebookIndexItem from './notebook_index_item';
 
-module.exports = React.createClass({
+const NotebooksIndex = React.createClass({
   componentWillMount() {
     NotebooksActions.fetchAllNotebooks();
   },
@@ -39,8 +42,12 @@ module.exports = React.createClass({
 
   _onToggle() {
     this.setState({
-      toggle: ToggleStore._getToggle('notebooksIndex')
+      toggle: ToggleStore.getToggle('notebooksIndex')
     });
+  },
+
+  _createNewNotebook() {
+    ToggleActions._toggleCreateNewNotebookForm();
   },
 
   _createNotebookIndexItems() {
@@ -57,7 +64,7 @@ module.exports = React.createClass({
         <section className='notebooks-header'>
           <div className='notebooks-header-container'>
             <h2 className='notebooks-header-title'>NOTEBOOKS</h2>
-            <button className='new-notebook-button'>New Notebook</button>
+            <img className='new-notebook-button' src={ Images.createNotebookIconPlus } onClick={ this._createNewNotebook } height='24' width='24' />
           </div>
           <input className='notebooks-searchbar' type='text' placeholder='Find a notebook' />
         </section>
@@ -70,3 +77,5 @@ module.exports = React.createClass({
     );
   }
 });
+
+module.exports = NotebooksIndex;

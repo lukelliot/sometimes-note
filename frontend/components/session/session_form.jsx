@@ -6,7 +6,7 @@ import ErrorActions from '../../actions/error_actions';
 import { Link } from 'react-router';
 
 
-module.exports = React.createClass({
+const SessionForm = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
@@ -46,12 +46,10 @@ module.exports = React.createClass({
 
   updateEmail(e) {
     this.setState({ email: e.target.value });
-    ErrorActions.clearErrors();
   },
 
   updatePassword(e) {
     this.setState({ password: e.target.value });
-    ErrorActions.clearErrors();
   },
 
   _handleErrors() {
@@ -176,3 +174,5 @@ module.exports = React.createClass({
       </article>
   );}
 });
+
+module.exports = SessionForm;

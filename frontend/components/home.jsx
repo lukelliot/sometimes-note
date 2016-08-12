@@ -3,7 +3,7 @@ import SessionStore from '../stores/session_store';
 import { Link } from 'react-router';
 
 
-module.exports = React.createClass({
+const Home = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
@@ -11,17 +11,12 @@ module.exports = React.createClass({
   render() {
       return(
         <div>
-          <Link to='signup'>Sign Up</Link>
-          <Link to='main'>Main</Link>
-          <Link to='signin'>Sign In</Link>
+          <Link to='signup'>Sign Up</Link><br/>
+          <Link to='main'>Main</Link><br/>
+          <Link to='signin'>Sign In</Link><br/>
         </div>
       );
     }
 });
 
-  // if (SessionStore.isUserLoggedIn()) {
-  //   this.context.router.push('notes');
-  // }
-  // else {
-
-// }
+module.exports = Home;

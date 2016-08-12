@@ -1,5 +1,4 @@
 import AppDispatcher from '../dispatcher/dispatcher';
-import NotesActions from '../actions/notes_actions';
 import NoteFormConstants from '../constants/note_form_constants';
 import { Store } from 'flux/utils';
 

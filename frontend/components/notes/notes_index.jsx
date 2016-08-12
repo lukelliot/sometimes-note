@@ -8,7 +8,7 @@ import NotesStore from '../../stores/notes_store';
 // Children
 import NotesList from './notes_list';
 
-module.exports = React.createClass({
+const NotesIndex = React.createClass({
   componentWillMount() {
     NotesActions.fetchAllNotes();
   },
@@ -44,3 +44,5 @@ module.exports = React.createClass({
     );
   }
 });
+
+module.exports = NotesIndex;

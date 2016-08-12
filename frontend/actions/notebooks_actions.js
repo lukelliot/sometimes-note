@@ -54,5 +54,12 @@ module.exports = {
       actionType: NotebooksConstants.REMOVED_NOTEBOOK,
       notebook: notebook
     });
+  },
+
+  setCurrentNotebook(notebook) {
+    AppDispatcher.dispatch({
+      actionType: NotebooksConstants.SET_CURRENT_NOTEBOOK,
+      notebook: notebook
+    });
   }
 };

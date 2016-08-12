@@ -15,7 +15,7 @@ module.exports = {
     $.ajax({
       url: 'api/notebooks',
       type: 'POST',
-      data: { notebook: notebooksData},
+      data: { notebook: notebookData },
       success,
       error(xhr) {
         let jsonErrors = xhr.responseJSON;

@@ -5,10 +5,12 @@ import { Store } from 'flux/utils';
 const ToggleStore = new Store(AppDispatcher);
 
 let _toggles = {
-  notebooksIndex: '-closed'
+  notebooksIndex: '-closed',
+  notebooksDropdown: '-closed',
+  createNewNotebookForm: '-closed'
 };
 
-ToggleStore._getToggle = (pane) => {
+ToggleStore.getToggle = (pane) => {
   return _toggles[pane];
 };
 
@@ -24,8 +26,14 @@ function _setToggle(pane) {
 
 ToggleStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
-    case ToggleConstants.TOGGLE_NOTEBOOKS_INDEX:
+    case ToggleConstants.NOTEBOOKS_INDEX:
       _setToggle('notebooksIndex');
+      break;
+    case ToggleConstants.NOTEBOOKS_DROPDOWN:
+      _setToggle('notebooksDropdown');
+      break;
+    case ToggleConstants.CREATE_NEW_NOTEBOOK_FORM:
+      _setToggle('createNewNotebookForm');
       break;
   }
 };

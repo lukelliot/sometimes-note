@@ -1,7 +1,7 @@
 import React from 'react';
 import NotesIndexItem from './notes_index_item';
 
-module.exports = React.createClass({
+const NotesList = React.createClass({
   _createNotesIndexItems() {
     return this.props.notes.map( note => {
       return(
@@ -37,3 +37,5 @@ module.exports = React.createClass({
     );
   }
 });
+
+module.exports = NotesList;

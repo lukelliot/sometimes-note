@@ -3,7 +3,7 @@ import moment from 'moment';
 import NoteFormActions from '../../actions/note_form_actions';
 import NotesFormStore from '../../stores/note_form_store';
 
-module.exports = React.createClass({
+const NotesIndexItem = React.createClass({
   _setNoteForm() {
     let currentNote = NotesFormStore.getCurrentNoteForm(),
         indexNote = this.props.note;
@@ -29,10 +29,12 @@ module.exports = React.createClass({
             <h4>{ moment(note.created_at).fromNow() }</h4>
           </div>
           <div className='note-item-content'>
-            { $(note.content).text() }
+            { $(note.content).text().slice(0, 91) }
           </div>
         </section>
       </li>
     );
   }
 });
+
+module.exports = NotesIndexItem;

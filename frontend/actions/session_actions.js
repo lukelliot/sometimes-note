@@ -24,10 +24,10 @@ module.exports = {
     SessionApiUtil.logout(this.removeCurrentUser);
   },
 
-  receiveCurrentUser(currentUser) {
+  receiveCurrentUser(user) {
     AppDispatcher.dispatch({
       actionType: SessionConstants.LOGIN,
-      currentUser: currentUser
+      currentUser: user
     });
   },
 

@@ -4,7 +4,8 @@ import { Store } from 'flux/utils';
 
 const NotebooksStore = new Store(AppDispatcher);
 
-let _notebooks = {};
+let _notebooks = {},
+    _currentNotebook = {};
 
 NotebooksStore.all = () => {
   return Object.keys(_notebooks).map( id => {
@@ -16,11 +17,26 @@ NotebooksStore.find = (id) => {
   return _notebooks[id];
 };
 
+NotebooksStore.getCurrentNotebook = () => {
+  return _currentNotebook;
+};
+
+function _setCurrentNotebook(notebook) {
+  if (notebook) {
+    _currentNotebook = notebook;
+  } else if (_currentNotebook.id === undefined) {
+    _currentNotebook = NotebooksStore.all()[0];
+    debugger
+  }
+  NotebooksStore.__emitChange();
+}
+
 function _setAllNotebooks(notebooks) {
   _notebooks = {};
   notebooks.forEach( notebook => {
     _notebooks[notebook.id] = notebook;
   });
+  _setCurrentNotebook();
   NotebooksStore.__emitChange();
 }
 
@@ -45,6 +61,8 @@ NotebooksStore.__onDispatch = (payload) => {
     case NotebooksConstants.REMOVED_NOTEBOOK:
       _removeSingleNotebook(payload.notebook);
       break;
+    case NotebooksConstants.SET_CURRENT_NOTEBOOK:
+      _setCurrentNotebook(payload.notebook);
   }
 };
 

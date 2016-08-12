@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import NotebooksActions from '../../actions/notebooks_actions';
 
-module.exports = React.createClass({
+const NotebooksIndexItem = React.createClass({
   _countNotes() {
     let numNotes = this.props.notebook.numNotes;
     let notesText = numNotes === 1 ? 'note' : 'notes';
@@ -25,7 +25,7 @@ module.exports = React.createClass({
         <div className='notebook-item-content'>
           <div className='notebook-item-title'>
             { notebook.title }
-            <button className='delete-button' onClick={ this._handleDelete }>Delete</button>
+            <img className='notebook-list-delete-button' src={ Images.trashcanIconWhite } onClick={ this._handleDelete } height='24' width='24' />
           </div>
           { this._countNotes() }
         </div>
@@ -33,3 +33,5 @@ module.exports = React.createClass({
     );
   }
 });
+
+module.exports = NotebooksIndexItem;
