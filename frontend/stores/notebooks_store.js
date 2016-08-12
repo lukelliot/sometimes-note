@@ -26,7 +26,6 @@ function _setCurrentNotebook(notebook) {
     _currentNotebook = notebook;
   } else if (_currentNotebook.id === undefined) {
     _currentNotebook = NotebooksStore.all()[0];
-    debugger
   }
   NotebooksStore.__emitChange();
 }

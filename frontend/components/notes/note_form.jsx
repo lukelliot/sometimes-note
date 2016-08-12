@@ -4,6 +4,7 @@ import React from 'react';
 // Stores
 import NoteFormStore from '../../stores/note_form_store';
 import SessionStore from '../../stores/session_store';
+import NotebooksStore from '../../stores/notebooks_store';
 
 // Actions
 import NotesActions from '../../actions/notes_actions';
@@ -38,7 +39,8 @@ const NoteForm = React.createClass({
   _formatNoteForSave() {
     let noteToSave = {
       title: this.state.title,
-      content: this.state.content
+      content: this.state.content,
+      notebook_id: NotebooksStore.getCurrentNotebook().id
     };
 
     if (this.state.id) {
@@ -47,7 +49,7 @@ const NoteForm = React.createClass({
     return noteToSave;
   },
 
-  _onFormChange() {
+  _saveNote() {
     if (this.state.title !== '') {
       if (this.state.id) {
         NotesActions.saveNote(this._formatNoteForSave());
@@ -55,6 +57,10 @@ const NoteForm = React.createClass({
         NotesActions.createNote(this._formatNoteForSave());
       }
     }
+  },
+
+  _onFormChange() {
+    this._saveNote();
 
     let note = NoteFormStore.getCurrentNoteForm();
     if (note) {
@@ -91,7 +97,7 @@ const NoteForm = React.createClass({
         />
         <div className='form-options'>
           <NotebooksDropdown currentNoteFormId={ this.state.id } />
-          <button className='note-form-save-button'>Save Note</button>
+          <button onClick={ this._saveNote } className='note-form-save-button'>Save Note</button>
         </div>
         <section className='edit-input' onClick={ this._focus }>
           <Quill className='editor'

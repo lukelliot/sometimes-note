@@ -20,11 +20,15 @@ const _ensureLoggedIn = (nextState, replace) => {
   }
 };
 
+const _redirect = (nextState, replace) => {
+  replace('/signin');
+};
+
 // NOTE Make sure to include onEnter={_ensureLoggedIn} to routes
 //  that you do not want accessed by non-users
 const routes = (
   <Route path='/' component={ App }>
-    <IndexRoute component={ Home } />
+    <IndexRoute onEnter={ _redirect } component={ Home } />
     <Route path='home' component={ Home } />
     <Route path='signup' component={ SessionForm } />
     <Route path='signin' component={ SessionForm } />
@@ -42,15 +46,3 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('root')
   );
 });
-
-// window.SessionStore = SessionStore;
-// window.SessionActions = SessionActions;
-// window.NotesActions = NotesActions;
-// window.NotesStore = NotesStore;
-
-// let u = {email: 'lucas', password: 'password'};
-// SessionActions.login(u);
-// let note = {title: 'title', content: 'content', notebook_id: 1};
-// NotesActions.createNote(note);
-
-// SessionActions.signup(u);
