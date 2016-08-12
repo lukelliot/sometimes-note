@@ -1,6 +1,6 @@
 # SometimesNote
 
-#### [SometimesNote](www.sometimes-note.herokuapp.com)
+#### [SometimesNote](http://sometimes-note.herokuapp.com)
 
 SometimesNote is a clone of Evernote and will attempt to emulate the core features of the web-app found at http://www.evernote.com. Built as a full-stack webapp using a Rails backend, Postgresql database, and React.js/Flux architecture for handling front-end UI.
 
