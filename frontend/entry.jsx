@@ -16,7 +16,7 @@ import NotebooksIndex from './components/notebooks/notebooks_index';
 
 const _ensureLoggedIn = (nextState, replace) => {
   if (!SessionStore.isUserLoggedIn()) {
-    replace('/login');
+    replace('/signin');
   }
 };
 
@@ -28,7 +28,7 @@ const routes = (
     <Route path='home' component={ Home } />
     <Route path='signup' component={ SessionForm } />
     <Route path='signin' component={ SessionForm } />
-    <Route path='main' component={ Main } />
+    <Route path='main' onEnter={ _ensureLoggedIn } component={ Main } />
   </Route>
 );
 

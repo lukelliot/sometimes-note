@@ -13,10 +13,7 @@
 #
 
 class Note < ActiveRecord::Base
-  # NOTE Add validations for presence for authorid and notebookid
-  # => they were taken out for testing.
-
-  validates :title, :content, presence: true
+  validates :title, :content, :author_id, :notebook_id, presence: true
   validates :archived, inclusion: { in: [true, false] }
 
   belongs_to(
