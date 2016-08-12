@@ -1,0 +1,78 @@
+.create-new-form-cmp-closed
+  visibility: hidden
+  position: absolute
+  opacity: 0
+  top: 0
+  height: 100%
+  width: 100%
+  z-index: -1
+  transition: all 100ms ease-in
+
+.create-new-form-cmp-open
+  background: #fff
+  position: absolute
+  opacity: 1
+  top: 0
+  height: 100%
+  width: 100%
+  z-index: 5
+  visibility: visible
+  transition: all 100ms ease-in
+
+.create-new-icon
+  margin-bottom: 25px
+
+.create-new-form-content
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding-top: 15%
+
+.create-new-form-title
+  margin: auto
+  font-size: 13px
+  letter-spacing: 2px
+  font-weight: 500
+  padding-bottom: 20px
+  color: #878787
+
+.create-new-divider
+  height: 1px
+  background-color: #D9D9D9
+  width: 8.8%
+
+.create-new-input
+  border: none
+  margin-top: 50px
+  margin-bottom: 100px
+  text-align: center
+  color: #383838
+  font-size: 32px
+  font-family: 'Arvo', serif
+  outline: none
+  font-weight: lighter
+
+.create-new-input::placeholder
+  color: #c4c4c4
+
+.create-new-form-buttons
+  display: flex
+
+.create-new-button
+  cursor: pointer
+  font-size: 13px
+  font-weight: 200
+  letter-spacing: 1px
+  border-radius: 5px
+  padding: 9px 14px
+  border: 1px solid #D9D9D9
+  min-width: 185px
+  margin: 0 5px
+
+.create-new-cancel
+  background-color: #ECECEC
+  color: #717171
+
+.create-new-submit
+  background-color: #2DBE60
+  color: #fff

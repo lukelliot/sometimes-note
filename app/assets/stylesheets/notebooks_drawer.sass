@@ -1,7 +1,7 @@
 .notebooks-drawer-cmp-open
   opacity: 1
   position: absolute
-  z-index: 9
+  z-index: 4
   left: 73px
   transition: all 400ms ease-out
   box-sizing: border-box
@@ -19,6 +19,7 @@
 
 .new-notebook-button
   float: right
+  cursor: pointer
 
 .notebooks-header-title
   margin: 0
@@ -64,16 +65,19 @@
   border-bottom: 1px solid #ECECEC
   margin: 0px 20px
 
-.notebook-item-cmp
-  padding-top: 10px
+.notebook-item-cmp:hover, .notebook-item-cmp:hover *
+  background-color: #2DBE60
+  color: #fff
 
 .notebook-item-title
-  margin-bottom: 10px
+  padding-bottom: 10px
+  padding-top: 10px
   font-family: 'Arvo', serif
   color: #4A4A4A
 
-.delete-button
+.notebook-list-delete-button
   float: right
+  cursor: pointer
 
 .notebook-item-note-count
   font-size: 11px
