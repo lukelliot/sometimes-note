@@ -104,34 +104,34 @@ ActiveRecord::Base.transaction do
     title: 'Create Tags',
     content: %Q(<div>CRUD and Flux, make sure it integrates seamlessly with NoteForm</div><br><div>),
     author_id: demo.id,
-    notebook_id: nb3.id
+    notebook_id: nb4.id
   )
 
   Note.create(
     title: 'Investigate Syntax Highlighting',
     content: %Q(<div>You may have to switch back to Draft.js, since it has plugins already fo syntax highlighting.</div>),
     author_id: demo.id,
-    notebook_id: nb3.id
+    notebook_id: nb4.id
   )
 
   Note.create(
     title: 'Search Function',
     content: %Q(<div>Overview is in the a/A curriculum from AJAX Twitter</div><br><div>Make sure to review that before attempting this on your own</div>),
     author_id: demo.id,
-    notebook_id: nb3.id
+    notebook_id: nb4.id
   )
 
   Note.create(
     title: 'Github API integration with SometimesNote clone',
     content: %Q(<div>Is this even possible?</div><br><div>Investigate, check stack overflow and see if any alternative solutions are available or if github has a api already available.</div>),
     author_id: demo.id,
-    notebook_id: nb3.id
+    notebook_id: nb4.id
   )
 
   Note.create(
     title: 'Add Reminders',
     content: %Q(<div>This will likely require some form of calendar api and maintaing a store to keep track of reminders and their associated notes</div>),
     author_id:demo.id,
-    notebook_id: nb3.id
+    notebook_id: nb4.id
   )
 end

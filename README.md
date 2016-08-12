@@ -17,16 +17,6 @@ By keeping the user's private information (e.g. password, user data, etc.) in th
 ### Notes
   Notes are stored in the Postgresql database for easy retrieval through API calls. Notes are associated with Users and Notebooks using foreign keys in the notes table, allowing for easy organization of 'notes by user' when they're sent back to the frontend for rendering. When fetched from the backend they are kept in a frontend 'NotesStore' in a private variable to keep them out of the reach of malicious users. The flux loop then uses private functions that are closed over and utilized by the AppDispatcher to retrieve single notes or batches of notes using 'NotesActions'.
 
-  ##### Notes Table
-  | Note Info     | Data Type     |
-  | ------------- |:-------------:|
-  | id            | :integer      |
-  | title         | :string       |
-  | content       | :text         |
-  | author_id     | :integer      |
-  | notebook_id   | :integer      |
-  | created_at    | :datetime     |
-  | updated_at    | :boolean      |
 
   Notes are rendered in two separate components that must communicate with each other through their shared 'store'. They can occupy the 'NoteForm' or the 'NotesIndex'. The former gets a single note by id from the store and displays its full content in the editor. The NotesIndex lists all notes with a preview of their content as well as a timestamp (using moment.js). Click handlers are installed on each list item which resets the displayed note in the NoteForm.
 
@@ -37,15 +27,6 @@ By keeping the user's private information (e.g. password, user data, etc.) in th
 ### Notebooks
 
   Notebooks are stores in the backend Postgresql database and associated with notes through the Notes notebook_id foreign key (Notebooks has many Notes, Note belong to Notebook). Notebooks contain a foreign key of their own, author_id. This allowed easy association between Users and their Notebooks.
-
-  ##### Notebooks Table
-  | Notebook Info     | Data Type     |
-  | ------------- |:-------------:|
-  | id            | :integer      |
-  | title         | :string       |
-  | author_id         | :integer       |
-  | created_at    | :datetime     |
-  | updated_at    | :boolean      |
 
   Notebooks are kept in their own NotebooksIndex component, where they are displayed with a title, a count of its notes, and a delete button which makes an API call to the backend to destroy the selected notebook.
 
