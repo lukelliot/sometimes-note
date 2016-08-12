@@ -3,6 +3,19 @@
     window.currentUser =
       <%= render('api/users/user.json.jbuilder', user: current_user).html_safe %>
   <% end %>
+
+  window.Images = {
+    createNotebookIcon: "<%= asset_path('create_notebook_icon') %>",
+    createTagIcon: "<%= asset_path('create_tag_icon') %>",
+    createNotebookIconPlus: "<%= asset_path('create_notebook_icon_plus') %>",
+    newNoteIconDefault: "<%= asset_path('new_note_icon_default') %>",
+    notebookDrawerIconDefault: "<%= asset_path('notebook_drawer_icon_default') %>",
+    notebookDropdownIcon: "<%= asset_path('notebook_dropdown_icon') %>",
+    notesIndexIconDefault: "<%= asset_path('notes_index_icon_default') %>",
+    trashcanIconGray: "<%= asset_path('trashcan_icon_gray') %>",
+    trashcanIconWhite: "<%= asset_path('trashcan_icon_white') %>",
+    logoutIcon: "<%= asset_path('logout_icon') %>"
+  };
 </script>
 
 <main id="root"></main>
