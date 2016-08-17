@@ -1,5 +1,9 @@
-import NoteFormConstants from '../constants/note_form_constants';
+// Dispatcher
 import AppDispatcher from '../dispatcher/dispatcher';
+
+// Constants
+import NoteFormConstants from '../constants/note_form_constants';
+
 
 module.exports = {
   setCurrentNoteForm(note) {

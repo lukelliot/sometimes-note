@@ -1,6 +1,13 @@
+// Util
 import NotebooksApiUtil from '../util/notebooks_api_util';
+
+// Constants
 import NotebooksConstants from '../constants/notebooks_constants';
+
+// Dispatcher
 import AppDispatcher from '../dispatcher/dispatcher';
+
+// Actions
 import ErrorActions from './error_actions';
 
 module.exports = {

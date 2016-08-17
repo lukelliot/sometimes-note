@@ -24,8 +24,6 @@ const _redirect = (nextState, replace) => {
   replace('/signin');
 };
 
-// NOTE Make sure to include onEnter={_ensureLoggedIn} to routes
-//  that you do not want accessed by non-users
 const routes = (
   <Route path='/' component={ App }>
     <IndexRoute onEnter={ _redirect } component={ Home } />

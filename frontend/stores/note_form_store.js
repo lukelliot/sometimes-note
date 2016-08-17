@@ -1,5 +1,10 @@
+// Dispatchers
 import AppDispatcher from '../dispatcher/dispatcher';
+
+// Constants
 import NoteFormConstants from '../constants/note_form_constants';
+
+// Flux
 import { Store } from 'flux/utils';
 
 const NoteFormStore = new Store(AppDispatcher);

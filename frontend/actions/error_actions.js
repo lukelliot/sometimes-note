@@ -1,5 +1,10 @@
+// Stores
 import ErrorStore from '../stores/error_store';
+
+// Dispatcher
 import AppDispatcher from '../dispatcher/dispatcher';
+
+// Constants
 import ErrorConstants from '../constants/error_constants';
 
 module.exports = {

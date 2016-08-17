@@ -1,5 +1,5 @@
 class Api::NotesController < ApplicationController
-  # before_action: :require_logged_in
+  before_action :require_logged_in
 
   def index
     @notes = current_user.notes

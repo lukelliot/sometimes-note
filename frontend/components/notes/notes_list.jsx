@@ -1,4 +1,7 @@
+// React
 import React from 'react';
+
+// Children
 import NotesIndexItem from './notes_index_item';
 
 const NotesList = React.createClass({

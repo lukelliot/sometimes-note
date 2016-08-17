@@ -1,6 +1,9 @@
+// React
 import React from 'react';
-import SessionStore from '../stores/session_store';
 import { Link } from 'react-router';
+
+// Stores
+import SessionStore from '../stores/session_store';
 
 
 const Home = React.createClass({

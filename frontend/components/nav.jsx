@@ -1,4 +1,7 @@
+// React
 import React from 'react';
+
+// Actions
 import NoteFormActions from '../actions/note_form_actions';
 import ToggleActions from '../actions/toggle_actions';
 import SessionActions from '../actions/session_actions';

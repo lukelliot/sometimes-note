@@ -1,6 +1,13 @@
+// React
 import React from 'react';
+
+// Vendor
 import moment from 'moment';
+
+// Actions
 import NoteFormActions from '../../actions/note_form_actions';
+
+// Stores
 import NotesFormStore from '../../stores/note_form_store';
 
 const NotesIndexItem = React.createClass({

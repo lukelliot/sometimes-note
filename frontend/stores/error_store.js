@@ -1,5 +1,10 @@
+// Dispatcher
 import AppDispatcher from '../dispatcher/dispatcher';
+
+// Constants
 import ErrorConstants from '../constants/error_constants';
+
+// Flux
 import { Store } from 'flux/utils';
 
 const ErrorStore = new Store(AppDispatcher);

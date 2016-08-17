@@ -1,9 +1,15 @@
+// React
 import React from 'react';
+import { Link } from 'react-router';
+
+// Actions
 import SessionActions from '../../actions/session_actions';
+import ErrorActions from '../../actions/error_actions';
+
+// Stores
 import SessionStore from '../../stores/session_store';
 import ErrorStore from '../../stores/error_store';
-import ErrorActions from '../../actions/error_actions';
-import { Link } from 'react-router';
+
 
 
 const SessionForm = React.createClass({

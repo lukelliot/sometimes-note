@@ -1,5 +1,10 @@
+// Dispatcher
 import AppDispatcher from '../dispatcher/dispatcher';
+
+// Constants
 import NotesConstants from '../constants/notes_constants';
+
+// Flux
 import { Store } from 'flux/utils';
 
 const NotesStore = new Store(AppDispatcher);

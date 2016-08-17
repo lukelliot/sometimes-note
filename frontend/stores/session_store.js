@@ -1,5 +1,10 @@
+// Dispatcher
 import AppDispatcher from '../dispatcher/dispatcher';
+
+// Constants
 import SessionConstants from '../constants/session_constants';
+
+// Flux
 import { Store } from 'flux/utils';
 
 const SessionStore = new Store(AppDispatcher);

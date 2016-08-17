@@ -1,5 +1,10 @@
+// React
 import React from 'react';
+
+// Vendor
 import moment from 'moment';
+
+// Actions
 import NotebooksActions from '../../actions/notebooks_actions';
 
 const NotebooksIndexItem = React.createClass({

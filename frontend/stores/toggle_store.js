@@ -1,5 +1,10 @@
+// Dispatcher
 import AppDispatcher from '../dispatcher/dispatcher';
+
+// Constants
 import ToggleConstants from '../constants/toggle_constants';
+
+// Flux
 import { Store } from 'flux/utils';
 
 const ToggleStore = new Store(AppDispatcher);
