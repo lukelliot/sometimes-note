@@ -18,3 +18,4 @@ tmp
 log
 .byebug_history
 .DS_Store
+.byebug_history
