@@ -1,9 +1,6 @@
-.form-logo {
-  content: url(https://www.evernote.com/redesign/global/img/elephant.png);
-}
-
 .form-logo, .form-title {
   margin: auto;
+  display: block;
 }
 
 input.text-input {
@@ -64,7 +61,7 @@ input.text-input {
 .error-message {
   text-align: left;
   position: relative;
-  left: 20px;
+  left: 10px;
   font-weight: 400;
 }
 
@@ -89,6 +86,7 @@ input.text-input {
 
 .submit {
   box-sizing: border-box;
+  padding-top: 40px;
 }
 
 ol.form-list {
