@@ -9,10 +9,6 @@ import NotesStore from '../../stores/notes_store';
 import NotesList from './notes_list';
 
 const NotesIndex = React.createClass({
-  componentWillMount() {
-    NotesActions.fetchAllNotes();
-  },
-
   getInitialState() {
     return({
       notes: NotesStore.all()
@@ -21,9 +17,10 @@ const NotesIndex = React.createClass({
 
   componentDidMount() {
     this.notesListener = NotesStore.addListener(this._onNotesChange);
+    NotesActions.fetchAllNotes();
   },
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     this.notesListener.remove();
   },
 

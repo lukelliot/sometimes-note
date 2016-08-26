@@ -13,10 +13,6 @@ import ToggleActions from '../../actions/toggle_actions';
 import NotebookIndexItem from './notebook_index_item';
 
 const NotebooksIndex = React.createClass({
-  componentWillMount() {
-    NotebooksActions.fetchAllNotebooks();
-  },
-
   getInitialState() {
     return({
       notebooks: NotebooksStore.all(),
@@ -25,11 +21,12 @@ const NotebooksIndex = React.createClass({
   },
 
   componentDidMount() {
+    NotebooksActions.fetchAllNotebooks();
     this.notebooksListener = NotebooksStore.addListener(this._onNotebooksChange);
     this.toggleListener = ToggleStore.addListener(this._onToggle);
   },
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     this.notebooksListener.remove();
     this.toggleListener.remove();
   },

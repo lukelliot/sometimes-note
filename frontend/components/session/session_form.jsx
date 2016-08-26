@@ -10,8 +10,6 @@ import ErrorActions from '../../actions/error_actions';
 import SessionStore from '../../stores/session_store';
 import ErrorStore from '../../stores/error_store';
 
-
-
 const SessionForm = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -32,10 +30,9 @@ const SessionForm = React.createClass({
     this.sessionListener = SessionStore.addListener(this._onSessionChange);
   },
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     this.errorListener.remove();
     this.sessionListener.remove();
-    ErrorActions.clearErrors();
   },
 
   _onErrorChange() {
@@ -106,16 +103,16 @@ const SessionForm = React.createClass({
       return('Password');
     }
   },
-
-  _setPolicyContext() {
-    let path = this.props.location.pathname;
-
-    if (path === '/signup') {
-      return('By clicking Create Account, I agree to the Terms of Service and Privacy Policy');
-    } else if (path === '/signin') {
-      return('Remember me for 30 days');
-    }
-  },
+  //
+  // _setPolicyContext() {
+  //   let path = this.props.location.pathname;
+  //
+  //   if (path === '/signup') {
+  //     return('By clicking Create Account, I agree to the Terms of Service and Privacy Policy');
+  //   } else if (path === '/signin') {
+  //     return('Remember me for 30 days');
+  //   }
+  // },
 
   _setDisplayAltLink() {
     let path = this.props.location.pathname;
@@ -145,7 +142,7 @@ const SessionForm = React.createClass({
     return(
       <article className='form-all'>
         <section className='form-header'>
-          <div className='form-logo'></div>
+          <img className='form-logo' src={ Images.logo } height='68' width='68' />
           <div className='form-title'><h1>{ this._setFormContext() }</h1></div>
           </section>
         <section className='form-body'>
@@ -154,21 +151,18 @@ const SessionForm = React.createClass({
               <ol className='form-list'>
                 <li className='client-input'>
                   <label className='input-type'>{ this._setEmailContextDisplay() }<br/>
-                    <input className='text-input' type="text" onChange={ this.updateEmail } value={ this.state.email } />
+                    <input className='text-input' type="text" onChange={ this.updateEmail } />
                     <div className='error'><div className='error-message'>{ emailError }</div></div>
                   </label>
                 </li>
                 <li className='client-input'>
                   <label className='input-type'>{ this._setPasswordContextDisplay() }<br/>
-                    <input className='text-input' type="password" onChange={ this.updatePassword } value={ this.state.password } />
+                    <input className='text-input' type="password" onChange={ this.updatePassword } />
                     <div className='error'><div className='error-message'>{ passwordError }</div></div>
                   </label>
                 </li>
-                <li className='policy'>
-                  { this._setPolicyContext() }
-                </li>
                 <li className='submit'>
-                  <input className='signup-submit' type="submit" value={ this._setFormContext() } />
+                  <button className='signup-submit' type='submit' >{ this._setFormContext() }</button>
                 </li>
               </ol>
             </div>
