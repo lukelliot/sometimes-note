@@ -28,6 +28,6 @@
   end
 
   def create_first_notebook
-    Notebook.create({ title: 'My First Notebook', description: '', author_id: @user.id })
+    Notebook.create({ title: 'My First Notebook', author_id: @user.id })
   end
 end
