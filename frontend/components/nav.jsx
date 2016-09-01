@@ -34,7 +34,7 @@ const Nav = React.createClass({
           <img className='nav-notes-index icon' src={ Images.notesIndexIconDefault } height='36' width='36' />
           <img className='nav-notebooks-index icon' src={ Images.notebookDrawerIconDefault } onClick={ this._toggleNotebooksIndex } height='36' width='36' />
         </div>
-        <img className='nav-logout icon' src={ Images.logoutIcon } onClick={ this._logout } height='36' width='36' />
+        <a className='nav-logout' onClick={ this._logout }>Logout</a>
       </div>
     );
   }
