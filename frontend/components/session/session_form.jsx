@@ -103,16 +103,15 @@ const SessionForm = React.createClass({
       return('Password');
     }
   },
-  //
-  // _setPolicyContext() {
-  //   let path = this.props.location.pathname;
-  //
-  //   if (path === '/signup') {
-  //     return('By clicking Create Account, I agree to the Terms of Service and Privacy Policy');
-  //   } else if (path === '/signin') {
-  //     return('Remember me for 30 days');
-  //   }
-  // },
+
+  _guestLogin(e) {
+    e.preventDefault();
+
+    SessionActions.login({
+      email: 'demo@fake.com',
+      password: 'password'
+    });
+  },
 
   _setDisplayAltLink() {
     let path = this.props.location.pathname;
@@ -120,15 +119,17 @@ const SessionForm = React.createClass({
     if (path === '/signup') {
       return(
         <section className='alt-link'>
-          <p>Already have an account?</p>
+          <p className='link-prompt'>Already have an account?</p>
           <Link to='signin'>Sign In</Link>
         </section>
       );
     } else if (path === '/signin') {
       return(
         <section className='alt-link'>
-          <p>Dont have an account?</p>
+          <p className='link-prompt'>Dont have an account?</p>
           <Link to='signup'>Create Account</Link>
+          <p>or</p>
+          <a onClick={ this._guestLogin }>Guest Login</a>
         </section>
       );
     }

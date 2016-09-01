@@ -122,10 +122,13 @@ ol.form-list {
 }
 
 .alt-link p {
-  padding-top: 20px;
   font-size: 12px;
   letter-spacing: 1px;
   color: #747474;
+}
+
+.alt-link p.link-prompt {
+  padding-top: 20px;
 }
 
 .alt-link a {
@@ -133,4 +136,5 @@ ol.form-list {
   font-weight: 400;
   letter-spacing: 1px;
   text-decoration: none;
+  cursor: pointer;
 }
