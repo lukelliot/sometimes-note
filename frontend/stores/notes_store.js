@@ -33,9 +33,7 @@ NotesStore.find = (id) => {
 
 function _setAllNotes(notes) {
   _notes = {};
-  notes.forEach( note => {
-    _notes[note.id] = note;
-  });
+  notes.forEach( note => _notes[note.id] = note);
   NotesStore.__emitChange();
 }
 
