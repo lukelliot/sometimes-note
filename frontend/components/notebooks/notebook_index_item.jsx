@@ -4,23 +4,45 @@ import React from 'react';
 // Vendor
 import moment from 'moment';
 
+// Stores
+import NotesStore from '../../stores/notes_store';
+
 // Actions
 import NotebooksActions from '../../actions/notebooks_actions';
 
 const NotebooksIndexItem = React.createClass({
+  getInitialState() {
+    return({
+      numNotes: NotesStore.countNotesByNotebook(this.props.notebook.id)
+    });
+  },
+
   _countNotes() {
-    let numNotes = this.props.notebook.numNotes;
-    let notesText = numNotes === 1 ? 'note' : 'notes';
+    let notesText = this.state.numNotes === 1 ? 'note' : 'notes';
     return(
       <div className='notebook-item-note-count'>
-        { numNotes } { notesText }
+        { this.state.numNotes } { notesText }
       </div>
     );
+  },
+
+  componentDidMount() {
+    this.notesListener = NotesStore.addListener(this._onNotesChange);
+  },
+
+  componentWillUnmount() {
+    this.notesListener.remove();
   },
 
   _handleDelete(e) {
     e.preventDefault();
     NotebooksActions.removeNotebook(this.props.notebook.id);
+  },
+
+  _onNotesChange() {
+    this.setState({
+      numNotes: NotesStore.countNotesByNotebook(this.props.notebook.id)
+    });
   },
 
   render() {
@@ -30,7 +52,13 @@ const NotebooksIndexItem = React.createClass({
         <div className='notebook-item-content'>
           <div className='notebook-item-title'>
             { notebook.title }
-            <img className='notebook-list-delete-button' src={ Images.trashcanIconWhite } onClick={ this._handleDelete } height='24' width='24' />
+            <img
+              className='notebook-list-delete-button'
+              src={ Images.trashcanIconWhite }
+              onClick={ this._handleDelete }
+              height='24'
+              width='24'
+            />
           </div>
           { this._countNotes() }
         </div>

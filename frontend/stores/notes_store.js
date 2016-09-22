@@ -11,14 +11,14 @@ const NotesStore = new Store(AppDispatcher);
 
 let _notes = {};
 
-NotesStore.allNotesByNotebookId = (notebookId) => {
-  let notesByNotebookId = [];
+NotesStore.countNotesByNotebook = (notebookId) => {
+  let numNotesByNotebook = 0;
   Object.keys(_notes).forEach( id => {
     if (_notes[id].notebookId === notebookId) {
-      notesByNotebookId.push(_notes[id]);
+      numNotesByNotebook++;
     }
   });
-  return notesByNotebookId;
+  return numNotesByNotebook;
 };
 
 NotesStore.all = () => {
@@ -33,7 +33,9 @@ NotesStore.find = (id) => {
 
 function _setAllNotes(notes) {
   _notes = {};
-  notes.forEach( note => _notes[note.id] = note);
+  notes.forEach( note => {
+    _notes[note.id] = note;
+  });
   NotesStore.__emitChange();
 }
 
